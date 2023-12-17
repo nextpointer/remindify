@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remindify</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- this is header portion -->
+  <div id="header">
+    <div id="heading" class="headers">
+      <h1>Remindify</h1>
+    </div>
+    <div id="auth" class="headers">
+      <div>
+        <h2>New User?</h2>
+      </div>
+      <div class="binary" id="true">
+        <p>0</p>
+      </div>
+      <div class="binary" id="false">
+        <p>1</p>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- this is body portion -->
+  <div id="reminder">
+    <div id="reminder-edit">
+      <div id="whats-new" class="reminder-edit-font">
+        <p><span>|   </span>Learn anything new?</p>
+        <input type="text" class="reminder-input">
+      </div>
+      <div id="more-about" class="reminder-edit-font">
+        <p><span>|   </span>More About</p>
+        <input type="text" class="reminder-input">
+      </div>
+      <div id="select-catagory" class="reminder-edit-font">
+        <p><span>|   </span>Select Catagory</p>
+        <select name="Catagory" id="Catagories" class="select-items">
+          <option value="DSA">DSA</option>
+          <option value="Academics">Academics</option>
+          <option value="New Skill">New Skill</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div id="reminder-timer" class="reminder-edit-font">
+        <p><span>|   </span>Reminds Every</p>
+        <div id="timer">
+          <select id="timer-day" class="select-items">
+            <option value="7">7 Days</option>
+            <option value="15">15 Days</option>
+            <option value="30">30 Days</option>
+            <option value="100">100 Days</option>
+            <option value="custom">Custom</option>
+          </select>
+          <div id="repeat">
+            <img src="./assets/repeat.png" alt="">
+          </div>
+        </div>
+        <div id="custom-calander">
+          <input type="text" placeholder="dd">
+          <input type="text" placeholder="mm">
+          <input type="text" placeholder="yyyy">
+          <input type="text">
+
+        </div>
+      </div>
+      <div id="submit">
+        <button id="add">ADD</button>
+      </div>
+    </div>
+
+    <!-- This is remind data portion -->
+    <div id="reminder-data">
+      <div id="all-catagories">
+          <button class="catagory-button">
+            <p>DSA</p>
+          </button>
+          <button class="catagory-button">
+            <p>Academics</p>
+          </button>
+          <button class="catagory-button">
+            <p>New Skills</p>
+          </button>
+          <button class="catagory-button">
+            <p>Others</p>
+          </button>
+          <button id="add-catagory">
+            <p>+</p>
+          </button>
+      </div>
+      <div id="all-learning-container">
+        <div class="reminder-container">
+
+        </div>
+        <div class="reminder-container">
+
+        </div>
+        <div class="reminder-container">
+
+        </div>
+        <div class="reminder-container">
+
+        </div>
+        <div class="reminder-container">
+
+        </div>
+        <div class="reminder-container">
+
+        </div>
+        <div class="reminder-container">
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- this is contact portion -->
+  
+  <div id="contact"></div>
+</body>
+
+</html>
