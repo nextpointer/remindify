@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Orbitron;
 }
+
 
 #header {
   height: 15vh;
@@ -77,19 +78,30 @@ h2 {
   /* border: solid black 1px; */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
-#reminder-edit {
+
+#remainder-operation{
+  /* background-color: #42be82; */
   height: 77vh;
-  width: 460px;
-  border: solid rgb(152, 152, 152) 1px;
-  margin: 5px;
-  border-radius: 5px;
-  padding: 40px 5px 5px 15px;
   
 }
 
-#whats-new{
+
+#reminder-edit {
+  height: 62vh;
+  width: 460px;
+  border: solid rgb(152, 152, 152) 1px;
+  margin: 5px;
+  border-radius: 25px;
+  padding: 40px 5px 5px 15px;
+  border-radius: 43px;
+  background: #ffffff;
+  box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
+
+}
+
+#whats-new {
   margin: 5px;
 }
 
@@ -116,7 +128,7 @@ h2 {
   font-family: Orbitron;
 }
 
-#more-about{
+#more-about {
   margin: 5px;
 }
 #more-about input {
@@ -147,6 +159,8 @@ h2 {
   width: 150px;
   height: 33px;
 }
+
+
 #repeat {
   height: 28px;
   width: 28px;
@@ -168,14 +182,16 @@ h2 {
   align-items: center;
 }
 #custom-calander input {
-  width: 80px;
+  width: 160px;
   height: 30px;
   margin: 20px;
   padding-left: 20px;
 }
+
+
 #submit {
   width: 420px;
-  height: 100px;
+  height: 75px;
   /* border: solid black 1px; */
   display: flex;
   justify-content: center;
@@ -191,6 +207,68 @@ h2 {
   transition: all ease 0.3s;
 }
 
+/* adding catagory */
+#adding-catagory{
+  height: 15vh;
+  width: 460px;
+  /* background-color: #6953e4; */
+  border: solid rgb(152, 152, 152) 1px;
+  margin: 5px;
+  border-radius: 25px;
+  padding: 25px 5px 5px 15px;
+  border-radius: 43px;
+  background: #ffffff;
+  box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
+}
+
+#adding-catagory-input input{
+  border-radius: 5px;
+  border: 1px solid #cdcdcd;
+  background: #f9f9f9;
+  height: 35px;
+  width: 350px;
+  padding: 5px;
+}
+
+#adding-catagory-input{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: #74d5ea; */
+  height: 50px;
+}
+#adding-catagory-input button span{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  font-size: 1rem;
+}
+
+#adding-catagory-input button{
+  height: 35px;
+  width: 70px;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black 1px;
+}
+
+#adding-catagory-header p{
+  color: #000;
+  font-family: Orbitron;
+  font-size: 20px;
+  font-style: normal;
+  /* font-weight: 200; */
+  line-height: normal;
+}
+#adding-catagory-header p span {
+  color: rgb(0, 149, 255);
+}
+  
+
+
+
 /* Reminder data portion */
 
 #reminder-data {
@@ -200,15 +278,19 @@ h2 {
   margin: 5px;
   border-radius: 5px;
   padding: 10px;
+  border-radius: 43px;
+background: #ffffff;
+box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
 }
 
 #all-catagories {
-  height: 8vh;
+  height: 10vh;
   width: 100%;
   /* border: solid black 1px; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  overflow-y: scroll;
   flex-wrap: wrap;
 }
 .catagory-button {
@@ -216,7 +298,7 @@ h2 {
   width: 130px;
   background-color: #fff;
   border: solid rgb(190, 190, 190) 1px;
-  border-radius: 3px;
+  border-radius: 2px;
   transition: all ease 0.5s;
   margin: 5px;
 }
@@ -225,22 +307,6 @@ h2 {
   color: #fff;
 }
 
-#add-catagory {
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
-  border: none;
-  background-color: rgb(178, 178, 178);
-  font-size: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all ease 0.5s;
-}
-#add-catagory:hover {
-  background-color: #42be82;
-}
 
 #all-learning-container {
   height: 65vh;
@@ -254,6 +320,7 @@ h2 {
   justify-content: start;
   align-items: start;
   flex-wrap: wrap;
+  
 }
 
 .reminder-container {
@@ -263,12 +330,63 @@ h2 {
   margin: 20px;
   border-radius: 15px;
   transition: all ease 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  gap: 10px;
+  /* padding: 10px 5px 5px 20px; */
 }
 
-.reminder-container:hover{
+.reminder-container:hover {
   height: 220px;
   width: 320px;
   margin: 0px;
+}
+
+.reminder-container:hover .container-deleteUpdate{
+  display: block;
+  border-radius: 0px 0px 15px 15px;
+  opacity: 1;
+  
+}
+
+.remainder-details{
+  /* background-color: #8aefad; */
+  padding: 7px 5px 20px 20px;
+  
+}
+
+.container-heading{
+  width: 90%;
+  height: auto;
+  max-height: 45px;
+  /* background-color: #42be82; */
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.container-subHeading{
+  width: 90%;
+  height: 70px;
+  font-size: .6rem;
+  /* background-color: #6953e4; */
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.523);
+}
+.container-subHeading p span{
+  font-size: .7rem;
+  color: #ffffff;
+  font-style: normal;
+}
+
+.container-remimdTime{
+  /* background-color: #c49442; */
+  font-size: .7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .reminder-container:nth-child(1) {
@@ -276,14 +394,14 @@ h2 {
 }
 
 .reminder-container:nth-child(2) {
-  background-color: #74D5EA;
+  background-color: #74d5ea;
 }
 
 .reminder-container:nth-child(3) {
-  background-color: #BDB2FC;
+  background-color: #bdb2fc;
 }
 .reminder-container:nth-child(4) {
-  background-color: #8AEFAD;
+  background-color: #8aefad;
 }
 .reminder-container:nth-child(5) {
   background-color: #6953e4;
@@ -291,6 +409,22 @@ h2 {
 .reminder-container:nth-child(6) {
   background-color: #fce8b2;
 }
+
+.container-deleteUpdate{
+  height: 30px;
+  width: 100%;
+  background-color: red;
+  display:none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+
+.container-deleteUpdate img{
+  height: 25px;
+  width: 25px;
+
+} 
 
 #contact {
   height: 5vh;
