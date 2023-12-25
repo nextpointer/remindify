@@ -1,15 +1,64 @@
+
+// Add new Category Function
+const AddCategory = document.querySelector("#adding-catagory-btn");
+const AddCategoryInput = document.querySelector("#adding-catagory-input-value");
+const CategoryZone = document.querySelector("#all-catagories");
+const selectCategories = document.querySelector("#Catagories");
+const reminderContainerZone=document.querySelector('#all-learning-container-zone')
+
+AddCategory.addEventListener("click", (e) => {
+  // Check if the input value is empty
+  if (AddCategoryInput.value.trim() === '') {
+    AddCategory.style.backgroundColor = 'red';
+    return; // Exit the function if input is empty
+  }
+
+  // Reset background color if input is not empty
+  AddCategory.style.backgroundColor = '';
+
+  // Category Add
+  const newCategoryelemnt = document.createElement("button");
+  newCategoryelemnt.classList.add("catagory-button");
+  const newCategoryInnerHTML = `<p>${AddCategoryInput.value}</p>`;
+  newCategoryelemnt.innerHTML = newCategoryInnerHTML;
+  CategoryZone.append(newCategoryelemnt);
+
+  // Add the category to the select zone
+  const optionCreateElemen = document.createElement("option");
+  optionCreateElemen.value = AddCategoryInput.value;
+  const optionInnerHTML = `${AddCategoryInput.value}`;
+  optionCreateElemen.innerHTML = optionInnerHTML;
+  selectCategories.append(optionCreateElemen);
+ 
+
+  const reminderContainer = document.createElement("div");
+  reminderContainer.classList.add('all-learning-containers',AddCategoryInput.value);
+  reminderContainerZone.append(reminderContainer)
+  AddCategoryInput.value = "";
+
+  
+});
+
+
 // select the div and elements
 const whatsNew = document.querySelector("#whats-new input[type=text]");
 const whatsAbout = document.querySelector("#more-about input[type=text]");
-const remainderDataField = document.querySelector("#all-learning-container");
 const addButton = document.querySelector("#add");
 
-remainderDataField.addEventListener("click", (e) => {
-  if (e.target.classList.contains("container-deleteUpdate")) {
-    const deleteItem = e.target.parentNode;
-    deleteItem.remove();
+
+const remimderDataField = document.querySelector('#all-learning-container-zone');
+
+remimderDataField.addEventListener('click', (e) => {
+  const deleteButton = e.target.closest('.container-deleteUpdate');
+  if (deleteButton) {
+    const deleteItem = deleteButton.closest('.reminder-container');
+    if (deleteItem) {
+      deleteItem.remove();
+    }
   }
 });
+
+
 
 addButton.addEventListener("click", () => {
   const parentDiv = document.createElement("div");
@@ -36,34 +85,36 @@ addButton.addEventListener("click", () => {
 
   whatsNew.value = "";
   whatsAbout.value = "";
-
   parentDiv.innerHTML = remainderContainer;
-  remainderDataField.append(parentDiv);
+  const remainderDataField = document.querySelectorAll(".all-learning-containers");
+  remainderDataField.forEach(container => {
+    if (container.classList.contains(selectCategories.value)) {
+      container.appendChild(parentDiv);
+    }
+  });
 });
 
-// Add new Category Function
-const AddCategory = document.querySelector("#adding-catagory-btn");
-const AddCategoryInput = document.querySelector("#adding-catagory-input-value");
-const CategoryZone = document.querySelector("#all-catagories");
-const selectCategories = document.querySelector("#Catagories");
+// Showing the container as per category
+CategoryZone.addEventListener('click', (e) => {
+  const clickedCategoryButton = e.target.closest('.catagory-button');
 
-AddCategory.addEventListener("click", (e) => {
-  const newCategoryelemnt = document.createElement("button");
-  const optionCreateElemen = document.createElement("option");
+  if (clickedCategoryButton) {
+    const categoryClassName = clickedCategoryButton.textContent;
 
-  newCategoryelemnt.classList.add("catagory-button");
-  optionCreateElemen.value = AddCategoryInput.value;
-
-  const newCategoryInnerHTML = `<p>${AddCategoryInput.value}</p>`;
-  const optionInnerHTML = `${AddCategoryInput.value}`;
-
-  newCategoryelemnt.innerHTML = newCategoryInnerHTML;
-  optionCreateElemen.innerHTML=optionInnerHTML
-  AddCategoryInput.value = "";
-
-  CategoryZone.append(newCategoryelemnt);
-  selectCategories.append(optionCreateElemen);
+    // Iterate through reminder containers
+    const reminderContainers = reminderContainerZone.querySelectorAll('.all-learning-containers');
+    reminderContainers.forEach(container => {
+      if (container.classList.contains(categoryClassName)) {
+        container.classList.add('visible');
+      } else {
+        container.classList.remove('visible');
+      }
+    });
+  }
 });
+
+
+
 
 
 

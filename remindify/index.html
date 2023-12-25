@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Remindify</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="./main.js" defer></script>
-  </head>
 
-  <body>
-    <!-- this is header portion -->
-    <div id="header">
-      <div id="heading" class="headers">
-        <h1>Remindify</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remindify</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="./main.js" defer></script>
+</head>
+
+<body>
+  <!-- this is header portion -->
+  <div id="header">
+    <div id="heading" class="headers">
+      <h1>Remindify</h1>
+    </div>
+    <div id="auth" class="headers">
+      <div>
+        <h2>New User?</h2>
       </div>
-      <div id="auth" class="headers">
-        <div>
-          <h2>New User?</h2>
-        </div>
-        <div class="binary" id="true">
-          <p>0</p>
-        </div>
-        <div class="binary" id="false">
-          <p>1</p>
-        </div>
+      <div class="binary" id="true">
+        <p>0</p>
+      </div>
+      <div class="binary" id="false">
+        <p>1</p>
       </div>
     </div>
+  </div>
 
-    <!-- this is body portion -->
-    <div id="reminder">
-      <div id="remainder-operation">
+  <!-- this is body portion -->
+  <div id="reminder">
+    <div id="remainder-operation">
       <div id="reminder-edit">
         <div id="whats-new" class="reminder-edit-font">
           <p><span>| </span>Learn anything new?</p>
@@ -59,10 +60,9 @@
               <img src="./assets/repeat.png" alt="" />
             </div>
             <div id="custom-calander">
-              <input type="date" name="custom-date" id="custom-date">
+              <input type="date" name="custom-date" id="custom-date" />
             </div>
           </div>
-          
         </div>
         <div id="submit">
           <button id="add">ADD</button>
@@ -73,26 +73,31 @@
           <p><span>| </span>Add New Catagory</p>
         </div>
         <div id="adding-catagory-input">
-          <input type="text" id="adding-catagory-input-value">
+          <input type="text" id="adding-catagory-input-value" />
           <button id="adding-catagory-btn"><span>ADD</span></button>
         </div>
-        
       </div>
     </div>
 
-      <!-- This is remind data portion -->
-      <div id="reminder-data">
-        <div id="all-catagories">
-          <!-- contain all category button -->
-        </div>
-        <div id="all-learning-container">
-          <!-- Containing all the Reminder container -->
+    <!-- This is remind data portion -->
+    <div id="reminder-data">
+      <div id="all-catagories">
+        <!-- contain all category button -->
+      </div>
+      <div id="all-learning-container-zone">
+        <div class="all-learning-containers">
+          
         </div>
       </div>
+      <div id="delete-reminder-conatainer">
+        <p>Delete</p>
+      </div>
     </div>
+  </div>
 
-    <!-- this is contact portion -->
+  <!-- this is contact portion -->
 
-    <div id="contact"></div>
-  </body>
+  <div id="contact"></div>
+</body>
+
 </html>
