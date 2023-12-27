@@ -135,3 +135,50 @@ CategoryZone.addEventListener('click', (e) => {
 function containsText(element, text) {
   return element.innerText.includes(text);
 }
+
+
+// Function to schedule a push notification
+function schedulePushNotification(title, options) {
+  if ('Notification' in window) {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        const notification = new Notification(title, options);
+        // You can customize the notification further if needed
+      }
+    });
+  }
+}
+
+// Modify the addButton click event to schedule push notification
+addButton.addEventListener("click", () => {
+
+
+  const reminderDataField = document.querySelectorAll(".all-learning-containers");
+  reminderDataField.forEach(container => {
+    if (container.classList.contains(selectCategories.value)) {
+
+      // Schedule push notification
+      const reminderTime = document.getElementById('custom-time').value;
+      const reminderDate = document.getElementById('custom-date').value;
+
+      if (reminderTime && reminderDate) {
+        const notificationTitle = whatsNew.value;
+        const notificationOptions = {
+          body: whatsAbout.value,
+          icon: 'D:\\Frontend\\PROJECTS\\Remindify\\remindify\\assets\\notification.png', // Provide the path to your notification icon
+        };
+
+        const notificationDateTime = new Date(`${reminderDate}T${reminderTime}`);
+        const currentTime = new Date();
+
+        // Check if the scheduled time is in the future
+        if (notificationDateTime > currentTime) {
+          const timeDifference = notificationDateTime - currentTime;
+          setTimeout(() => {
+            schedulePushNotification(notificationTitle, notificationOptions);
+          }, timeDifference);
+        }
+      }
+    }
+  });
+});
