@@ -1,10 +1,10 @@
-
 // Add new Category Function
 const AddCategory = document.querySelector("#adding-catagory-btn");
 const AddCategoryInput = document.querySelector("#adding-catagory-input-value");
 const CategoryZone = document.querySelector("#all-catagories");
 const selectCategories = document.querySelector("#Catagories");
-const reminderContainerZone=document.querySelector('#all-learning-container-zone')
+const reminderContainerZone = document.querySelector('#all-learning-container-zone');
+const deleteReminderContainer = document.querySelector("#delete-reminder-conatainer");
 
 AddCategory.addEventListener("click", (e) => {
   // Check if the input value is empty
@@ -29,22 +29,42 @@ AddCategory.addEventListener("click", (e) => {
   const optionInnerHTML = `${AddCategoryInput.value}`;
   optionCreateElemen.innerHTML = optionInnerHTML;
   selectCategories.append(optionCreateElemen);
- 
 
   const reminderContainer = document.createElement("div");
-  reminderContainer.classList.add('all-learning-containers',AddCategoryInput.value);
-  reminderContainerZone.append(reminderContainer)
+  reminderContainer.classList.add('all-learning-containers', AddCategoryInput.value);
+  reminderContainerZone.append(reminderContainer);
   AddCategoryInput.value = "";
-
-  
 });
 
+// Add event listener for deleting the category
+deleteReminderContainer.addEventListener("click", () => {
+  const selectedCategory = selectCategories.value;
+
+  // Remove the category button
+  const categoryButtons = document.querySelectorAll(".catagory-button");
+  categoryButtons.forEach(button => {
+    if (containsText(button, selectedCategory)) {
+      button.remove();
+    }
+  });
+
+  // Remove the category from the select zone
+  const optionToRemove = selectCategories.querySelector(`option[value='${selectedCategory}']`);
+  if (optionToRemove) {
+    optionToRemove.remove();
+  }
+
+  // Remove the category div and its content
+  const categoryDivToRemove = reminderContainerZone.querySelector(`.${selectedCategory}`);
+  if (categoryDivToRemove) {
+    categoryDivToRemove.remove();
+  }
+});
 
 // select the div and elements
 const whatsNew = document.querySelector("#whats-new input[type=text]");
 const whatsAbout = document.querySelector("#more-about input[type=text]");
 const addButton = document.querySelector("#add");
-
 
 const remimderDataField = document.querySelector('#all-learning-container-zone');
 
@@ -57,8 +77,6 @@ remimderDataField.addEventListener('click', (e) => {
     }
   }
 });
-
-
 
 addButton.addEventListener("click", () => {
   const parentDiv = document.createElement("div");
@@ -113,9 +131,7 @@ CategoryZone.addEventListener('click', (e) => {
   }
 });
 
-
-
-
-
-
-
+// Custom function to check if an element contains specific text
+function containsText(element, text) {
+  return element.innerText.includes(text);
+}

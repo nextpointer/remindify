@@ -1,11 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+@font-face {
+  font-family: "Monserrat";
+  src: url(./font/Montserrat-VariableFont_wght.ttf);
+  src: url(./font/Montserrat-Light.ttf);
+}
+@font-face {
   font-family: Orbitron;
+  src: url(./font/Orbitron-Regular.ttf);
 }
 
+input[type="text"] {
+  font-family: Monserrat;
+  font-size: 1rem;
+  /* font-weight: bold; */
+}
+input[type="date"] {
+  font-family: Orbitron;
+}
 
 #header {
   height: 15vh;
@@ -14,6 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: Orbitron;
 }
 
 .headers {
@@ -81,14 +98,13 @@ h2 {
   align-items: start;
 }
 
-#remainder-operation{
+#remainder-operation {
   /* background-color: #42be82; */
   height: 77vh;
-  
 }
 
-
 #reminder-edit {
+  font-family: Orbitron;
   height: 62vh;
   width: 460px;
   border: solid rgb(152, 152, 152) 1px;
@@ -98,7 +114,6 @@ h2 {
   border-radius: 43px;
   background: #ffffff;
   box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
-
 }
 
 #whats-new {
@@ -106,8 +121,9 @@ h2 {
 }
 
 .reminder-edit-font {
-  color: #000;
   font-family: Orbitron;
+  color: #000;
+
   font-size: 20px;
   font-style: normal;
   /* font-weight: 200; */
@@ -125,7 +141,6 @@ h2 {
   width: 400px;
   margin: 10px 0 18px 0;
   padding: 5px;
-  font-family: Orbitron;
 }
 
 #more-about {
@@ -153,54 +168,56 @@ h2 {
   display: flex;
   justify-content: start;
   align-items: center;
+  /* background-color: #8af8c3; */
+  height: 50px;
+  gap: 3vh;
 }
 
 #timer-day {
   width: 150px;
   height: 33px;
+  margin: 2px;
 }
 
-
-#repeat {
-  height: 28px;
-  width: 28px;
-  border: solid black 1px;
-  margin-left: 35px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#repeat img {
-  height: 15px;
-  width: 15px;
-}
 #custom-calander {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background-color: #6953e4;
 }
-#custom-calander input {
-  width: 160px;
-  height: 30px;
-  margin: 20px;
-  padding-left: 20px;
+#custom-date{
+  height: 33px;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid #cdcdcd;
+  background: #f9f9f9;
+  padding: 5px;
 }
 
+#custom-time{
+  height: 33px;
+  width: 90px;
+  border-radius: 5px;
+  border: 1px solid #cdcdcd;
+  background: #f9f9f9;
+  padding: 5px;
+  font-family: Orbitron;
+}
 
 #submit {
   width: 420px;
-  height: 75px;
+  height: 50px;
   /* border: solid black 1px; */
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
   padding: 10px;
+  /* background-color: #be6742; */
 }
 #add {
-  height: 50px;
-  width: 150px;
+  height: 40px;
+  width: 140px;
+  font-family: Orbitron;
 }
 #add:hover {
   background-color: #42be82;
@@ -208,7 +225,7 @@ h2 {
 }
 
 /* adding catagory */
-#adding-catagory{
+#adding-catagory {
   height: 15vh;
   width: 460px;
   /* background-color: #b453e4; */
@@ -221,30 +238,32 @@ h2 {
   box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
 }
 
-#adding-catagory-input input{
+#adding-catagory-input input {
   border-radius: 5px;
   border: 1px solid #cdcdcd;
   background: #f9f9f9;
   height: 35px;
-  width: 350px;
+  width: 320px;
   padding: 5px;
+  font-family: Monserrat;
 }
 
-#adding-catagory-input{
+#adding-catagory-input {
   display: flex;
   align-items: center;
   justify-content: space-around;
   /* background-color: #74d5ea; */
   height: 50px;
 }
-#adding-catagory-input button span{
+#adding-catagory-input button span {
   /* display: flex;
   justify-content: center;
   align-items: center; */
   font-size: 1rem;
 }
 
-#adding-catagory-input button{
+#adding-catagory-input button {
+  font-family: Orbitron;
   height: 35px;
   width: 70px;
   border-radius: 5%;
@@ -254,7 +273,13 @@ h2 {
   border: solid black 1px;
 }
 
-#adding-catagory-header p{
+#adding-catagory-input button:hover{
+  background-color: #42be82;
+  transition: all ease 0.3s;
+}
+
+
+#adding-catagory-header p {
   color: #000;
   font-family: Orbitron;
   font-size: 20px;
@@ -265,13 +290,11 @@ h2 {
 #adding-catagory-header p span {
   color: rgb(0, 149, 255);
 }
-  
-
-
 
 /* Reminder data portion */
 
 #reminder-data {
+  font-family: Monserrat;
   height: 77vh;
   width: 1000px;
   border: solid rgb(132, 132, 132) 1px;
@@ -279,9 +302,10 @@ h2 {
   border-radius: 5px;
   padding: 10px;
   border-radius: 43px;
-background: #ffffff;
-box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
-/* background-color: #6953e4; */
+  background: #ffffff;
+  box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
+  /* background-color: #6953e4; */
+  overflow: hidden;
 }
 
 #all-catagories {
@@ -296,6 +320,7 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   /* background-color: #f47878; */
 }
 .catagory-button {
+  font-family: Orbitron;
   height: 30px;
   width: 130px;
   background-color: #fff;
@@ -309,7 +334,6 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   color: #fff;
 }
 
-
 #all-learning-container-zone {
   height: 58vh;
   width: 100%;
@@ -322,11 +346,10 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   display: flex;
   justify-content: start;
   align-items: start;
- 
+
   /* background-color: #42be82; */
-  
 }
-.all-learning-containers{
+.all-learning-containers {
   /* background-color: grey; */
   height: 58vh;
   width: 100%;
@@ -335,7 +358,7 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   display: none;
 }
 
-#delete-reminder-conatainer{
+#delete-reminder-conatainer {
   background-color: #f0eded;
   height: 30px;
   width: 98%;
@@ -344,13 +367,15 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Orbitron;
 }
 
-#delete-reminder-conatainer:hover{
+#delete-reminder-conatainer:hover {
   background-color: #f47878;
 }
 
 .reminder-container {
+  font-family: Monserrat;
   height: 150px;
   border: solid rgb(192, 192, 192) 1px;
   width: 270px;
@@ -360,7 +385,7 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+
   gap: 10px;
   /* padding: 10px 5px 5px 20px; */
 }
@@ -371,20 +396,19 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   margin: 0px;
 }
 
-.reminder-container:hover .container-deleteUpdate{
+.reminder-container:hover .container-deleteUpdate {
   display: block;
   border-radius: 0px 0px 15px 15px;
   opacity: 1;
-  
 }
 
-.remainder-details{
+.remainder-details {
   /* background-color: #8aefad; */
   padding: 7px 5px 20px 20px;
-  
 }
 
-.container-heading{
+.container-heading {
+  font-family: "Monserrat";
   width: 90%;
   height: auto;
   max-height: 45px;
@@ -394,23 +418,25 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   margin-bottom: 10px;
 }
 
-.container-subHeading{
+.container-subHeading {
+  font-family: "Monserrat";
   width: 90%;
   height: 70px;
-  font-size: .6rem;
+  font-size: 0.6rem;
   /* background-color: #6953e4; */
   font-style: italic;
-  color: rgba(0, 0, 0, 0.523);
+  color: rgba(0, 0, 0, 0.873);
 }
-.container-subHeading p span{
-  font-size: .7rem;
+.container-subHeading p span {
+  font-family: "Monserrat";
+  font-size: 0.7rem;
   color: #ffffff;
   font-style: normal;
 }
 
-.container-remimdTime{
+.container-remimdTime {
   /* background-color: #c49442; */
-  font-size: .7rem;
+  font-size: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -437,33 +463,27 @@ box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
   background-color: #fce8b2;
 }
 
-.container-deleteUpdate{
+.container-deleteUpdate {
   height: 30px;
   width: 100%;
   background-color: red;
-  display:none;
+  display: none;
   opacity: 0;
   transition: opacity 1s ease;
 }
 
-
-.container-deleteUpdate img{
+.container-deleteUpdate img {
   height: 25px;
   width: 25px;
-
-} 
+}
 
 /* Sperate reminder container for each container */
-.visible{
+.visible {
   display: flex;
   align-items: start;
   justify-content: start;
   overflow-y: scroll;
   flex-wrap: wrap;
-}
-
-.vanish{
-  display: none;
 }
 
 #contact {
