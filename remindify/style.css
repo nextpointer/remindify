@@ -56,7 +56,7 @@ input[type="date"] {
 }
 /* create animation */
 .alert.show{
-  animation: show_alert 2s ease forwards;
+  animation: show_alert 3s ease forwards;
 }
 @keyframes show_alert {
   0%{

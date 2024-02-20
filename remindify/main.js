@@ -9,9 +9,11 @@ const deleteReminderContainer = document.querySelector("#delete-reminder-conatai
 AddCategory.addEventListener("click", (e) => {
   // Check if the input value is empty
   if (AddCategoryInput.value.trim() === '') {
-    AddCategory.style.backgroundColor = '#f47878';
-    return; // Exit the function if input is empty
+    showAlert();
+    // alertBar.classList.add('hide')
+    return;
   }
+
 
   // Reset background color if input is not empty
   AddCategory.style.backgroundColor = '';
@@ -137,7 +139,25 @@ function containsText(element, text) {
 }
 
 // Showing Alert massege
+// create a function for displaying the alert
+const alertBar=document.querySelector(".alert");
+const showAlert=()=>{
 
+  alertBar.classList.remove('hide')
+  alertBar.classList.add('show')
+  setTimeout(()=>{
+    alertBar.classList.remove('show')
+    alertBar.classList.add('hide')
+  },3000)
+
+}
+// add feature to the close button
+const alertClosebtn=document.querySelector('.alert>span:nth-child(3)');
+alertClosebtn.addEventListener('click',()=>{
+  alertBar.classList.remove('show')
+  alertBar.classList.add('hide')
+  
+})
 
 
 // Function to schedule a push notification
