@@ -9,7 +9,7 @@ const deleteReminderContainer = document.querySelector("#delete-reminder-conatai
 AddCategory.addEventListener("click", (e) => {
   // Check if the input value is empty
   if (AddCategoryInput.value.trim() === '') {
-    AddCategory.style.backgroundColor = 'red';
+    AddCategory.style.backgroundColor = '#f47878';
     return; // Exit the function if input is empty
   }
 
@@ -135,6 +135,9 @@ CategoryZone.addEventListener('click', (e) => {
 function containsText(element, text) {
   return element.innerText.includes(text);
 }
+
+// Showing Alert massege
+
 
 
 // Function to schedule a push notification

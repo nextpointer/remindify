@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Remindify</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/807e990f4f.js" crossorigin="anonymous"></script>
   <script src="./main.js" defer></script>
 </head>
 
@@ -13,19 +14,15 @@
   <!-- this is header portion -->
   <div id="header">
     <div id="heading" class="headers">
-      <h1>Remindify</h1>
+        <h1>Remindify</h1>
     </div>
-    <div id="auth" class="headers">
-      <div>
-        <h2>New User?</h2>
-      </div>
-      <div class="binary" id="true">
-        <p>0</p>
-      </div>
-      <div class="binary" id="false">
-        <p>1</p>
-      </div>
+      <div class="alert show">
+        <span class="fa-solid fa-circle-info"></span>
+        <span class="alert-msg">plz crete Catagory First</span>
+        <span class="fa-solid fa-xmark"></span>
+      
     </div>
+
   </div>
 
   <!-- this is body portion -->
@@ -49,15 +46,15 @@
         <div id="reminder-timer" class="reminder-edit-font">
           <p><span>| </span>Reminds Every</p>
           <div id="timer">
-            <select id="timer-day" class="select-items">
+            <select id="timer-day">
               <option value="7">7 Days</option>
               <option value="15">15 Days</option>
               <option value="30">30 Days</option>
               <option value="100">100 Days</option>
               <option value="custom">Custom</option>
             </select>
-              <input type="date" name="custom-date" id="custom-date" />
-              <input type="time" name="custom-name" id="custom-time">
+            <input type="date" name="custom-date" id="custom-date" />
+            <input type="time" name="custom-name" id="custom-time">
           </div>
         </div>
         <div id="submit">
@@ -82,7 +79,7 @@
       </div>
       <div id="all-learning-container-zone">
         <div class="all-learning-containers">
-          
+
         </div>
       </div>
       <div id="delete-reminder-conatainer">

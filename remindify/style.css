@@ -14,6 +14,13 @@
   src: url(./font/Orbitron-Regular.ttf);
 }
 
+:root{
+  --primary-color-red:#f47878;
+  --primary-color-green:#8af8c3;
+  --secondary-color:#f0eded;
+}
+
+
 input[type="text"] {
   font-family: Monserrat;
   font-size: 1rem;
@@ -28,9 +35,46 @@ input[type="date"] {
   width: 100%;
   /* background-color: aqua; */
   display: flex;
+  flex-direction: row;
+  font-family: Orbitron;
+}
+.alert{
+  background-color: var(--primary-color-red);
+  padding: 20px 20px;
+  min-width: 330px;
+  position: absolute;
+  top: 20px;
+  left: 620px;
+  border-radius: 12px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: Orbitron;
+
+}
+.alert span:nth-child(3){
+  cursor: pointer;
+}
+/* create animation */
+.alert.show{
+  animation: show_alert 2s ease forwards;
+}
+@keyframes show_alert {
+  0%{
+    transform: translateY(-200%);
+  }
+  40%{
+    transform: translateY(-0%);
+  }
+  80%{
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(-200%);
+  }
+}
+
+.hide{
+  display: none;
 }
 
 .headers {
@@ -38,6 +82,10 @@ input[type="date"] {
   width: 350px;
   /* border: solid black 1px; */
   margin: 10px;
+  
+}
+#title{
+  background-color: #bdb2fc;
 }
 
 h1 {
@@ -49,42 +97,7 @@ h1 {
   line-height: normal;
 }
 
-#auth {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.binary {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-#true {
-  background-color: #8af8c3;
-}
-#false {
-  background-color: #f47878;
-}
-.binary p {
-  color: #000;
-  font-family: Orbitron;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-h2 {
-  color: #000;
-  font-family: Orbitron;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
+
 /* end of header portion */
 
 /* Start reminder portion */
@@ -96,24 +109,33 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: start;
+  /* background-color: #bb8aef; */
 }
 
 #remainder-operation {
   /* background-color: #42be82; */
   height: 77vh;
+  width: 33%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  align-items: center;
 }
 
 #reminder-edit {
   font-family: Orbitron;
   height: 62vh;
-  width: 460px;
+  width: 96%;
+  min-width: 300px;
   border: solid rgb(152, 152, 152) 1px;
-  margin: 5px;
+  /* margin: 5px; */
   border-radius: 25px;
-  padding: 40px 5px 5px 15px;
+  padding: 20px 5px 5px 15px;
   border-radius: 43px;
   background: #ffffff;
   box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
+  
 }
 
 #whats-new {
@@ -123,14 +145,13 @@ h2 {
 .reminder-edit-font {
   font-family: Orbitron;
   color: #000;
-
   font-size: 20px;
-  font-style: normal;
+  /* font-style: normal; */
   /* font-weight: 200; */
   line-height: normal;
 }
 .reminder-edit-font p span {
-  color: rgb(0, 149, 255);
+  color: #000;
 }
 
 .reminder-input {
@@ -138,7 +159,8 @@ h2 {
   border: 1px solid #cdcdcd;
   background: #f9f9f9;
   height: 30px;
-  width: 400px;
+  width: 95%;
+  min-width: 250px;
   margin: 10px 0 18px 0;
   padding: 5px;
 }
@@ -160,7 +182,8 @@ h2 {
   border: 1px solid #cdcdcd;
   background: #f9f9f9;
   height: 30px;
-  width: 400px;
+  width: 95%;
+  min-width: 250px;
   margin: 10px 0 17px 0;
   padding: 5px;
 }
@@ -169,14 +192,25 @@ h2 {
   justify-content: start;
   align-items: center;
   /* background-color: #8af8c3; */
-  height: 50px;
+  height: 40px;
   gap: 3vh;
 }
 
 #timer-day {
-  width: 150px;
+  width:150px;
   height: 33px;
   margin: 2px;
+  color: #000;
+  font-family: Orbitron;
+  font-size: 15px;
+  font-style: normal;
+  /* font-weight: 200; */
+  line-height: normal;
+  border-radius: 5px;
+  border: 1px solid #cdcdcd;
+  background: #f9f9f9;
+  /* margin: 10px 0 17px 0; */
+  padding: 5px;
 }
 
 #custom-calander {
@@ -187,7 +221,7 @@ h2 {
 }
 #custom-date{
   height: 33px;
-  width: 150px;
+  width: 33%;
   border-radius: 5px;
   border: 1px solid #cdcdcd;
   background: #f9f9f9;
@@ -196,7 +230,7 @@ h2 {
 
 #custom-time{
   height: 33px;
-  width: 90px;
+  width: 25%;
   border-radius: 5px;
   border: 1px solid #cdcdcd;
   background: #f9f9f9;
@@ -205,8 +239,8 @@ h2 {
 }
 
 #submit {
-  width: 420px;
-  height: 50px;
+  width: 90%;
+  height: 10vh;
   /* border: solid black 1px; */
   display: flex;
   justify-content: center;
@@ -218,6 +252,7 @@ h2 {
   height: 40px;
   width: 140px;
   font-family: Orbitron;
+  margin-bottom: 2px;
 }
 #add:hover {
   background-color: #42be82;
@@ -227,7 +262,8 @@ h2 {
 /* adding catagory */
 #adding-catagory {
   height: 15vh;
-  width: 460px;
+  width: 96%;
+  min-width: 300px;
   /* background-color: #b453e4; */
   border: solid rgb(152, 152, 152) 1px;
   margin: 5px;
@@ -243,7 +279,7 @@ h2 {
   border: 1px solid #cdcdcd;
   background: #f9f9f9;
   height: 35px;
-  width: 320px;
+  width: 75%;
   padding: 5px;
   font-family: Monserrat;
 }
@@ -254,6 +290,7 @@ h2 {
   justify-content: space-around;
   /* background-color: #74d5ea; */
   height: 50px;
+  padding-right: 10px;
 }
 #adding-catagory-input button span {
   /* display: flex;
@@ -265,12 +302,14 @@ h2 {
 #adding-catagory-input button {
   font-family: Orbitron;
   height: 35px;
-  width: 70px;
+  width: auto;
   border-radius: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
   border: solid black 1px;
+  padding: 2px;
+  margin-left: 2px;
 }
 
 #adding-catagory-input button:hover{
@@ -466,7 +505,7 @@ h2 {
 .container-deleteUpdate {
   height: 30px;
   width: 100%;
-  background-color: red;
+  background-color: var(--primary-color-red);
   display: none;
   opacity: 0;
   transition: opacity 1s ease;
@@ -490,4 +529,20 @@ h2 {
   height: 5vh;
   width: 100%;
   /* border: solid black 1px; */
+}
+
+
+
+/* Add responsive */
+@media (max-width: 650px) {
+  /* Adjustments for smaller screens */
+  #reminder{
+    flex-wrap: wrap;
+  }
+
+  #remainder-operation{
+    width: 100%;
+  }
+  
+  
 }
