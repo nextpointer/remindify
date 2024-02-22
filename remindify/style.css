@@ -436,14 +436,24 @@ h1 {
 }
 
 .reminder-container:hover .container-deleteUpdate {
-  display: block;
+  display: flex;
   border-radius: 0px 0px 15px 15px;
   opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.reminder-container:hover .container-subHeading {
+  height: auto;
+  margin-bottom: 20px;
+  transition: opacity 1s ease;
+}
+.reminder-container:hover .container-subHeading p span {
+  transition: opacity 1s ease;
 }
 
 .remainder-details {
   /* background-color: #8aefad; */
-  padding: 7px 5px 20px 20px;
+  padding: 7px 5px 0px 20px;
 }
 
 .container-heading {
@@ -451,7 +461,7 @@ h1 {
   width: 90%;
   height: auto;
   max-height: 45px;
-  /* background-color: #42be82; */
+  /* background-color: #2b513f; */
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 10px;
@@ -460,46 +470,46 @@ h1 {
 .container-subHeading {
   font-family: "Monserrat";
   width: 90%;
-  height: 70px;
+  height: 25px;
   font-size: 0.6rem;
   /* background-color: #6953e4; */
   font-style: italic;
   color: rgba(0, 0, 0, 0.873);
+  overflow-y: hidden;
+  margin-bottom: 20px;
 }
 .container-subHeading p span {
   font-family: "Monserrat";
-  font-size: 0.7rem;
-  color: #ffffff;
-  font-style: normal;
+  display: inline-block;
+  background-color: #eceaea;
+  color: #fff;
+  height: auto;
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--primary-color-red);
+  cursor: pointer;
 }
 
 .container-remimdTime {
   /* background-color: #c49442; */
+  width: 90%;
   font-size: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+  height: auto;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(121, 121, 121);
+  font-size: 13px;
+  
 }
 
 .reminder-container:nth-child(1) {
-  background-color: #a3cdeb;
-}
-
-.reminder-container:nth-child(2) {
-  background-color: #74d5ea;
-}
-
-.reminder-container:nth-child(3) {
-  background-color: #bdb2fc;
-}
-.reminder-container:nth-child(4) {
-  background-color: #8aefad;
-}
-.reminder-container:nth-child(5) {
-  background-color: #6953e4;
-}
-.reminder-container:nth-child(6) {
-  background-color: #fce8b2;
+  background-color: #ffffff;
 }
 
 .container-deleteUpdate {
@@ -508,7 +518,10 @@ h1 {
   background-color: var(--primary-color-red);
   display: none;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
+  display: flex;
+  border-radius: 0 0 15px 15px;
+  justify-content: center;
 }
 
 .container-deleteUpdate img {

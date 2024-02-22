@@ -160,13 +160,15 @@ addButton.addEventListener("click", () => {
         <p>${whatsNew.value}</p>
       </div>
       <div class="container-subHeading">
-        <p><span>| </span>${whatsAbout.value}</p>
+        <p><span>${whatsAbout.value}</span></p>
       </div>
       <div class="container-remimdTime">
-        <p>Remind me <span>every</span></p>
-        <p>Sunday</p>
-        <p>Repeat</p>
-        <input type="checkbox">
+        <p>Reminds <span>on</span></p>
+        <p>
+          <span>23 FEB,2024</span>
+          <span>23:45</span>
+        </p>
+        
       </div>
     </div>
     <div class="container-deleteUpdate">
@@ -233,6 +235,10 @@ alertClosebtn.addEventListener("click", () => {
   alertBar.classList.add("hide");
 });
 
+
+
+
+
 // Function to schedule a push notification
 function schedulePushNotification(title, options) {
   if ("Notification" in window) {
@@ -260,7 +266,7 @@ addButton.addEventListener("click", () => {
         const notificationTitle = whatsNew.value;
         const notificationOptions = {
           body: whatsAbout.value,
-          icon: "D:\\Frontend\\PROJECTS\\Remindify\\remindify\\assets\\notification.png", // Provide the path to your notification icon
+          
         };
 
         const notificationDateTime = new Date(
@@ -279,3 +285,4 @@ addButton.addEventListener("click", () => {
     }
   });
 });
+
