@@ -23,14 +23,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: start;
-  height: 100vh;
+  height: 108vh;
   width: 100%;
-
   background-color: #8ec5fc;
   background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
 }
 #login-container {
-  height: 70vh;
+  height: 100vh;
   width: 58%;
   background-color: #fff;
   border-radius: 15px;
@@ -44,9 +43,9 @@ body {
 }
 
 .login-header {
-  height: 15vh;
+  height: 200px;
   width: 100%;
-  /* background-color: aquamarine; */
+  background-color: rgb(212, 255, 127);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +59,7 @@ body {
 .login-toggle {
   height: 10vh;
   width: 100%;
-  /* background-color: rgb(127, 131, 255); */
+  background-color: rgb(127, 131, 255);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,27 +98,25 @@ body {
   align-items: center;
   color: #fff;
   font-family: Monserrat, Arial;
+  text-decoration: none;
 }
 
-.login-toogle-signup {
-  background-color: transparent;
-}
 
 .login-toggle-container p {
   font-size: 1.1rem;
 }
 
 .login-form {
-  height: 30vh;
+  height: 65vh;
   width: 100%;
-  /* background-color: aquamarine; */
-  padding: 35px;
+  background-color: aquamarine;
+  padding: 50px;
 }
 
 .login-submit-form {
   height: 17vh;
   width: 100%;
-  /* background-color: rgb(221, 127, 255); */
+  background-color: rgb(221, 127, 255);
   display: flex;
   align-items: center;
   justify-content: space-between;

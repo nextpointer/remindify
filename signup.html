@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login Page</title>
+    <title>Sign Up page Page</title>
     <link rel="stylesheet" href="cursor.css">
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        .login-toogle-signup {
+        .login-toogle-login {
             opacity: 0.095;
+        }
+
+        .login-toogle-signup {
+            background-color: #000;
+        }
+        .login-submit-form p:nth-child(2){
+            display: none;
         }
     </style>
 </head>
@@ -23,7 +30,7 @@
         </div>
         <div id="login-container">
             <div class="login-header">
-                <p>Login</p>
+                <p>SignUp</p>
             </div>
             <div class="login-toggle">
                 <div class="login-toggle-container">
@@ -38,6 +45,10 @@
             </div>
             <div class="login-form">
                 <div id="whats-new" class="reminder-edit-font">
+                    <p><span>| </span>Full Name*</p>
+                    <input type="text" class="reminder-input" required />
+                </div>
+                <div id="whats-new" class="reminder-edit-font">
                     <p><span>| </span>Email*</p>
                     <input type="text" class="reminder-input" required />
                 </div>
@@ -45,9 +56,13 @@
                     <p><span>| </span>Password*</p>
                     <input type="password" class="reminder-input" required />
                 </div>
+                <div id="whats-new" class="reminder-edit-font">
+                    <p><span>| </span>Confirm Password*</p>
+                    <input type="password" class="reminder-input" required />
+                </div>
             </div>
             <div class="login-submit-form">
-                <p>Login</p>
+                <p>Create Account</p>
                 <p>Forget Password?</p>
             </div>
         </div>
