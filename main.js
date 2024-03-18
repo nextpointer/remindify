@@ -30,7 +30,7 @@ AddCategory.addEventListener("click", (e) => {
     alertTextContent.textContent = "Plx create a catagory first";
     // alertBar.classList.add('hide')
     return;
-  }
+  } 
 
   // Reset background color if input is not empty
   AddCategory.style.backgroundColor = "";
