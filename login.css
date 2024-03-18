@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Monserrat";
+  src: url(./font/Montserrat-VariableFont_wght.ttf);
+  src: url(./font/Montserrat-Light.ttf);
+}
+@font-face {
+  font-family: Orbitron;
+  src: url(./font/Orbitron-Regular.ttf);
+}
+
+:root {
+  --primary-color-red: #f47878;
+  --primary-color-green: #8af8c3;
+  --secondary-color: #f0eded;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  height: 100vh;
+  width: 100%;
+
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+#login-container {
+  height: 70vh;
+  width: 58%;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10px;
+  flex-direction: column;
+  position: relative;
+  top: 130px;
+}
+
+.login-header {
+  height: 15vh;
+  width: 100%;
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-header p {
+  font-size: 3rem;
+  font-family: Orbitron, Monserrat, Arial;
+  font-weight: bold;
+}
+.login-toggle {
+  height: 10vh;
+  width: 100%;
+  /* background-color: rgb(127, 131, 255); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-toggle-container {
+  height: 57px;
+  width: 230px;
+  /* background-color: #f47878; */
+  position: relative;
+  left: 7px;
+  border: 3px solid transparent;
+  border-image: linear-gradient(
+    45deg,
+    var(--primary-color-green),
+    var(--primary-color-red)
+  );
+  border-image-slice: 1;
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-btn {
+  width: 49%;
+  height: 45px;
+  background-color: #000;
+  /* border-radius: 8px; */
+  cursor: pointer;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: Monserrat, Arial;
+}
+
+.login-toogle-signup {
+  background-color: transparent;
+}
+
+.login-toggle-container p {
+  font-size: 1.1rem;
+}
+
+.login-form {
+  height: 30vh;
+  width: 100%;
+  /* background-color: aquamarine; */
+  padding: 35px;
+}
+
+.login-submit-form {
+  height: 17vh;
+  width: 100%;
+  /* background-color: rgb(221, 127, 255); */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+}
+.login-submit-form p {
+  font-size: 1.8rem;
+  font-family: Orbitron, Monserrat, Arial;
+  cursor: pointer;
+  font-weight: bold;
+}
+.login-submit-form p:nth-child(2) {
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+#whats-new input {
+  outline: none;
+  height: 40px;
+  background-color: transparent;
+}

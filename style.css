@@ -3,6 +3,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+}
+
+body{
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
 }
 @font-face {
   font-family: "Monserrat";
@@ -134,7 +140,7 @@ h1 {
   padding: 20px 5px 5px 15px;
   border-radius: 43px;
   background: #ffffff;
-  box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
+  /* box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191); */
   
 }
 
@@ -163,6 +169,7 @@ h1 {
   min-width: 250px;
   margin: 10px 0 18px 0;
   padding: 5px;
+  background-color: transparent;
 }
 
 #more-about {
@@ -180,7 +187,7 @@ h1 {
   line-height: normal;
   border-radius: 5px;
   border: 1px solid #cdcdcd;
-  background: #f9f9f9;
+  background: #ffffff;
   height: 30px;
   width: 95%;
   min-width: 250px;
@@ -208,7 +215,7 @@ h1 {
   line-height: normal;
   border-radius: 5px;
   border: 1px solid #cdcdcd;
-  background: #f9f9f9;
+  background: #ffffff;
   /* margin: 10px 0 17px 0; */
   padding: 5px;
 }
@@ -224,7 +231,7 @@ h1 {
   width: 33%;
   border-radius: 5px;
   border: 1px solid #cdcdcd;
-  background: #f9f9f9;
+  background: #ffffff;
   padding: 5px;
 }
 
@@ -233,7 +240,7 @@ h1 {
   width: 25%;
   border-radius: 5px;
   border: 1px solid #cdcdcd;
-  background: #f9f9f9;
+  background: #ffffff;
   padding: 5px;
   font-family: Orbitron;
 }
@@ -253,6 +260,8 @@ h1 {
   width: 140px;
   font-family: Orbitron;
   margin-bottom: 2px;
+  background-color: transparent;
+  border:solid 1px #cccaca;
 }
 #add:hover {
   background-color: #42be82;
@@ -271,13 +280,13 @@ h1 {
   padding: 25px 5px 5px 15px;
   border-radius: 43px;
   background: #ffffff;
-  box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
+  /* box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191); */
 }
 
 #adding-catagory-input input {
   border-radius: 5px;
   border: 1px solid #cdcdcd;
-  background: #f9f9f9;
+  background: #ffffff;
   height: 35px;
   width: 75%;
   padding: 5px;
@@ -310,6 +319,7 @@ h1 {
   border: solid black 1px;
   padding: 2px;
   margin-left: 2px;
+  background-color: transparent;
 }
 
 #adding-catagory-input button:hover{
@@ -342,7 +352,7 @@ h1 {
   padding: 10px;
   border-radius: 43px;
   background: #ffffff;
-  box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191);
+  /* box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191); */
   /* background-color: #6953e4; */
   overflow: hidden;
 }
@@ -559,3 +569,6 @@ h1 {
   
   
 }
+
+
+
