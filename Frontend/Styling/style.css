@@ -12,12 +12,12 @@ body{
 }
 @font-face {
   font-family: "Monserrat";
-  src: url(./font/Montserrat-VariableFont_wght.ttf);
-  src: url(./font/Montserrat-Light.ttf);
+  src: url(../font/Montserrat-Light.ttf);
+  src: url(../font/Montserrat-Medium.ttf);
 }
 @font-face {
   font-family: Orbitron;
-  src: url(./font/Orbitron-Regular.ttf);
+  src: url(../font/Orbitron-Regular.ttf);
 }
 
 :root{
