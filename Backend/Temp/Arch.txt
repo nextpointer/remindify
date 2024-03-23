@@ -1,0 +1,32 @@
+Endpoints:
+    /sign up(post):
+        {
+            fullName:string,
+            Email:string,
+            Password:string
+        }
+    /login(post):
+        {
+            Email:string,
+            Password:string
+        }
+    /createRemainder(post)
+        {
+            newLearing:string,
+            about:string,
+            catagoryName:string,
+            newLearing:string,
+            remainderEvery:string,
+            RemainderDate:string,
+            RemainderTime:string
+        }
+    /getRemainder(get):
+        {
+            newLearing:string,
+            about:string,
+            catagoryName:string,
+            newLearing:string,
+            remainderEvery:string,
+            RemainderDate:string,
+            RemainderTime:string
+        }
