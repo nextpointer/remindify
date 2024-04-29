@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const remainderSchema=mongoose.Schema(
+const remainderSchema=new Schema(
     {
         _id:mongoose.Schema.Types.ObjectId,
         CatagoryID:{
