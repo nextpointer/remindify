@@ -1,26 +1,22 @@
-import express from 'express'
-import './DB/connect.js';
-import { Model } from './models/model.js';
-const app=express()
-const PORT =3000||process.env.PORT;
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
-Model.create({
-    name: 'Surajit',
-    age: 21,
-    Dept:"CSE",
-    FavSubject: 'Nothing'
-})
+const app = express();
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+);
 
-console.log(Model.create({
-    name: 'Surajit',
-    age: 24,
-    Dept:"CSE",
-    FavSubject: 'Nothing'
-}));
-app.get('/',(req,res)=>{
-    res.send('Ficj');
-})
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(express.static("public"));
+app.use(cookieParser());
 
-app.listen(PORT,()=>{
-    console.log(`server is running on ${PORT}`);
-})
+// creating the routers
+import router from "./routes/user.routes.js";
+app.use("/api/v1/user",router)
+
+
+export { app };
