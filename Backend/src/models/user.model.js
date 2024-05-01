@@ -21,6 +21,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    RefreshToken: {
+      type: String,
+    }
   },
   {
     timestamps: true,
@@ -29,20 +32,19 @@ const userSchema = new Schema(
 
 // hashed the password
 userSchema.pre("save", async function (next) {
-  if (this.isModified("Password")) return next();
-  this.Password = await bcrypt.hash(this.Password, 10, (e) => {
-    console.log(e);
-  });
+  if (!this.isModified("Password")) return next();
+  this.Password = await bcrypt.hash(this.Password, 10);
   next();
 });
 
 userSchema.methods.isPasswordCorrect = async function (password) {
+  
   return await bcrypt.compare(password, this.Password);
 };
 
 // generating access token and refresh token
 userSchema.methods.generateAccessToken = async function () {
-  jwt.sign(
+  return jwt.sign(
     {
       FirstName: this.FirstName,
       LastName: this.LastName,
@@ -56,7 +58,7 @@ userSchema.methods.generateAccessToken = async function () {
 };
 
 userSchema.methods.generateRefreshToken = async function () {
-  jwt.sign(
+  return jwt.sign(
     {
       _id: this.id,
     },

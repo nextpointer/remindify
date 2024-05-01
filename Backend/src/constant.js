@@ -1,1 +1,1 @@
-export const DB_NAME = "RemindifyDB"
+export const DB_NAME = "Remindify"
