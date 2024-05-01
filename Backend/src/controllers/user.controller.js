@@ -40,15 +40,6 @@ export const registerUser = asyncHandler(async (req, res) => {
 });
 
 export const loginUser = asyncHandler(async (req, res) => {
-  // take data from the req.body
-  // validate the data
-  // find the user by the email address or username
-  // Check the password
-  // if not matched showing incorrect password
-  // if yes generate access and refreshToken
-  // send this token via cookies
-  // give authorization
-
   // get the data from request
   const { Email, Password } = req.body;
   // check validation
@@ -95,4 +86,28 @@ export const loginUser = asyncHandler(async (req, res) => {
         "User LoggedIn Successfully"
       )
     );
+});
+
+export const LogOutUser = asyncHandler(async (req, res) => {
+  await user.findByIdAndUpdate(
+    req.User._id,
+    {
+      $unset: {
+        RefreshToken: "",
+      },
+    },
+    {
+      new: true,
+    }
+  );
+  const option = {
+    httpOnly: true,
+    secure: true,
+  };
+
+  return res
+    .status(200)
+    .clearCookie("AccessToken", option)
+    .clearCookie("RefreshToken", option)
+    .json(new ApiResponse(200, {}, "User Logout Successfully"));
 });
