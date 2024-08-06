@@ -27,8 +27,7 @@ AddCategory.addEventListener("click", (e) => {
   if (AddCategoryInput.value.trim() === "") {
     showAlert();
     alertBar.style.backgroundColor = redColor;
-    alertTextContent.textContent = "Plx create a catagory first";
-    // alertBar.classList.add('hide')
+    alertTextContent.textContent = "Please create a category first";
     return;
   } 
 
@@ -36,18 +35,18 @@ AddCategory.addEventListener("click", (e) => {
   AddCategory.style.backgroundColor = "";
 
   // Category Add
-  const newCategoryelemnt = document.createElement("button");
-  newCategoryelemnt.classList.add("catagory-button");
+  const newCategoryElement = document.createElement("button");
+  newCategoryElement.classList.add("catagory-button");
   const newCategoryInnerHTML = `<p>${AddCategoryInput.value}</p>`;
-  newCategoryelemnt.innerHTML = newCategoryInnerHTML;
-  CategoryZone.append(newCategoryelemnt);
+  newCategoryElement.innerHTML = newCategoryInnerHTML;
+  CategoryZone.append(newCategoryElement);
 
   // Add the category to the select zone
-  const optionCreateElemen = document.createElement("option");
-  optionCreateElemen.value = AddCategoryInput.value;
+  const optionCreateElement = document.createElement("option");
+  optionCreateElement.value = AddCategoryInput.value;
   const optionInnerHTML = `${AddCategoryInput.value}`;
-  optionCreateElemen.innerHTML = optionInnerHTML;
-  selectCategories.append(optionCreateElemen);
+  optionCreateElement.innerHTML = optionInnerHTML;
+  selectCategories.append(optionCreateElement);
 
   const reminderContainer = document.createElement("div");
   reminderContainer.classList.add(
@@ -55,10 +54,23 @@ AddCategory.addEventListener("click", (e) => {
     AddCategoryInput.value
   );
   reminderContainerZone.append(reminderContainer);
+  
+  // Auto-focus the newly created category
+  const clickedCategoryButton = newCategoryElement;
+  const categoryClassName = clickedCategoryButton.textContent;
+  const reminderContainers = reminderContainerZone.querySelectorAll(".all-learning-containers");
+  reminderContainers.forEach((container) => {
+    if (container.classList.contains(categoryClassName)) {
+      container.classList.add("visible");
+    } else {
+      container.classList.remove("visible");
+    }
+  });
+
   AddCategoryInput.value = "";
-    showAlert();
-    alertBar.style.backgroundColor = greenColor;
-    alertTextContent.textContent = "Catagory created";
+  showAlert();
+  alertBar.style.backgroundColor = greenColor;
+  alertTextContent.textContent = "Category created";
 });
 
 // Add event listener for deleting the category
@@ -89,7 +101,7 @@ deleteReminderContainer.addEventListener("click", () => {
     categoryDivToRemove.remove();
     showAlert();
     alertBar.style.backgroundColor = greenColor;
-    alertTextContent.textContent = "Catagory removed";
+    alertTextContent.textContent = "Category removed";
   }
 });
 
@@ -110,12 +122,11 @@ remimderDataField.addEventListener("click", (e) => {
       deleteItem.remove();
       showAlert();
       alertBar.style.backgroundColor = greenColor;
-      alertTextContent.textContent = "Remainder removed";
+      alertTextContent.textContent = "Reminder removed";
     }
   }
 });
 
-console.log(CategoryZone.hasChildNodes());
 addButton.addEventListener("click", () => {
   if (selectCategories.selectedIndex == -1) {
     showAlert();
@@ -125,7 +136,7 @@ addButton.addEventListener("click", () => {
       inputHeader.style.borderColor = redColor;
       showAlert();
       alertBar.style.backgroundColor = redColor;
-      alertTextContent.textContent = "create a catagory first";
+      alertTextContent.textContent = "Please create a category first";
       setTimeout(() => {
         inputHeader.style.borderColor = "";
       }, 5000);
@@ -138,7 +149,7 @@ addButton.addEventListener("click", () => {
       inputHeader.style.borderColor = redColor;
       showAlert();
       alertBar.style.backgroundColor = redColor;
-      alertTextContent.textContent = "give a remainder heading";
+      alertTextContent.textContent = "Please give a reminder heading";
       setTimeout(() => {
         inputHeader.style.borderColor = "";
       }, 5000);
@@ -146,8 +157,6 @@ addButton.addEventListener("click", () => {
     }
     return;
   }
-  
-  
   else {
     inputHeader.style.borderColor = "";
   }
@@ -178,15 +187,13 @@ addButton.addEventListener("click", () => {
   whatsNew.value = "";
   whatsAbout.value = "";
   parentDiv.innerHTML = remainderContainer;
-  const remainderDataField = document.querySelectorAll(
-    ".all-learning-containers"
-  );
+  const remainderDataField = document.querySelectorAll(".all-learning-containers");
   remainderDataField.forEach((container) => {
     if (container.classList.contains(selectCategories.value)) {
       container.appendChild(parentDiv);
       showAlert();
       alertBar.style.backgroundColor = greenColor;
-      alertTextContent.textContent = "Remainder created";
+      alertTextContent.textContent = "Reminder created";
     }
   });
 });
@@ -199,9 +206,7 @@ CategoryZone.addEventListener("click", (e) => {
     const categoryClassName = clickedCategoryButton.textContent;
 
     // Iterate through reminder containers
-    const reminderContainers = reminderContainerZone.querySelectorAll(
-      ".all-learning-containers"
-    );
+    const reminderContainers = reminderContainerZone.querySelectorAll(".all-learning-containers");
     reminderContainers.forEach((container) => {
       if (container.classList.contains(categoryClassName)) {
         container.classList.add("visible");
@@ -217,7 +222,7 @@ function containsText(element, text) {
   return element.innerText.includes(text);
 }
 
-// Showing Alert massege
+// Showing Alert message
 // create a function for displaying the alert
 const alertBar = document.querySelector(".alert");
 const showAlert = () => {
@@ -235,10 +240,6 @@ alertClosebtn.addEventListener("click", () => {
   alertBar.classList.add("hide");
 });
 
-
-
-
-
 // Function to schedule a push notification
 function schedulePushNotification(title, options) {
   if ("Notification" in window) {
@@ -251,38 +252,52 @@ function schedulePushNotification(title, options) {
   }
 }
 
+// Handle custom interval inputs
+const timerDaySelect = document.getElementById("timer-day");
+const customDateInput = document.getElementById("custom-date");
+const customTimeInput = document.getElementById("custom-time");
+
+timerDaySelect.addEventListener("change", () => {
+  if (timerDaySelect.value === "custom") {
+    customDateInput.disabled = false;
+    customTimeInput.disabled = false;
+  } else {
+    customDateInput.disabled = true;
+    customTimeInput.disabled = true;
+  }
+});
+
 // Modify the addButton click event to schedule push notification
 addButton.addEventListener("click", () => {
-  const reminderDataField = document.querySelectorAll(
-    ".all-learning-containers"
-  );
+  const reminderDataField = document.querySelectorAll(".all-learning-containers");
   reminderDataField.forEach((container) => {
     if (container.classList.contains(selectCategories.value)) {
       // Schedule push notification
-      const reminderTime = document.getElementById("custom-time").value;
-      const reminderDate = document.getElementById("custom-date").value;
+      const selectedInterval = timerDaySelect.value;
+      let notificationDateTime;
 
-      if (reminderTime && reminderDate) {
-        const notificationTitle = whatsNew.value;
-        const notificationOptions = {
-          body: whatsAbout.value,
-          
-        };
+      if (selectedInterval === "custom") {
+        const reminderTime = customTimeInput.value;
+        const reminderDate = customDateInput.value;
 
-        const notificationDateTime = new Date(
-          `${reminderDate}T${reminderTime}`
-        );
+        if (reminderTime && reminderDate) {
+          notificationDateTime = new Date(`${reminderDate}T${reminderTime}`);
+        }
+      } else {
+        const intervalDays = parseInt(selectedInterval);
+        notificationDateTime = new Date();
+        notificationDateTime.setDate(notificationDateTime.getDate() + intervalDays);
+      }
+
+      if (notificationDateTime) {
         const currentTime = new Date();
-
-        // Check if the scheduled time is in the future
         if (notificationDateTime > currentTime) {
           const timeDifference = notificationDateTime - currentTime;
           setTimeout(() => {
-            schedulePushNotification(notificationTitle, notificationOptions);
+            schedulePushNotification(whatsNew.value, { body: whatsAbout.value });
           }, timeDifference);
         }
       }
     }
   });
 });
-

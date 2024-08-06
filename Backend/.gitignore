@@ -1,6 +1,0 @@
-.env
-node_modules/
-build/
-npm-debug.log
-.nyc/
-.DS_Store

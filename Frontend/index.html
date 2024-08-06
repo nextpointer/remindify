@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Remindify</title>
-  <link rel="stylesheet" href="./Styling/cursor.css">
-  <link rel="stylesheet" href="./Styling/style.css" />
+  <link rel="stylesheet" href="../Styling/cursor.css">
+  <link rel="stylesheet" href="../Styling/style.css" />
   <script src="https://kit.fontawesome.com/807e990f4f.js" crossorigin="anonymous"></script>
   <script src="./main.js" defer></script>
   <script src="./lib/cursor.js" defer></script>
 </head>
-
 <body>
   <div class="cursor"></div>
   <div class="cursor2"></div>
   <!-- this is header portion -->
   <div id="header">
     <div id="heading" class="headers">
-        <h1>Remindify</h1>
+      <h1>Remindify</h1>
     </div>
-      <div class="alert hide">
-        <span class="fa-solid fa-circle-info"></span>
-        <span class="alert-msg">plz crete Catagory First</span>
-        <span class="fa-solid fa-xmark"></span>
-      
+    <div class="alert hide">
+      <span class="fa-solid fa-circle-info"></span>
+      <span class="alert-msg">Please create a category first</span>
+      <span class="fa-solid fa-xmark"></span>
     </div>
-
   </div>
 
   <!-- this is body portion -->
@@ -42,7 +38,7 @@
           <input type="text" class="reminder-input" />
         </div>
         <div id="select-catagory" class="reminder-edit-font">
-          <p><span>| </span>Select Catagory</p>
+          <p><span>| </span>Select Category</p>
           <select name="Catagory" id="Catagories" class="select-items">
             <!-- contain all category options -->
           </select>
@@ -57,8 +53,8 @@
               <option value="100">100 Days</option>
               <option value="custom">Custom</option>
             </select>
-            <input type="date" name="custom-date" id="custom-date" />
-            <input type="time" name="custom-name" id="custom-time">
+            <input type="date" name="custom-date" id="custom-date" disabled/>
+            <input type="time" name="custom-time" id="custom-time" disabled/>
           </div>
         </div>
         <div id="submit">
@@ -67,7 +63,7 @@
       </div>
       <div id="adding-catagory">
         <div id="adding-catagory-header">
-          <p><span>| </span>Add New Catagory</p>
+          <p><span>| </span>Add New Category</p>
         </div>
         <div id="adding-catagory-input">
           <input type="text" id="adding-catagory-input-value" autofocus/>
@@ -83,7 +79,6 @@
       </div>
       <div id="all-learning-container-zone">
         <div class="all-learning-containers">
-
         </div>
       </div>
       <div id="delete-reminder-conatainer">
@@ -93,9 +88,6 @@
   </div>
 
   <!-- this is contact portion -->
-
   <div id="contact"></div>
 </body>
-
 </html>
-
