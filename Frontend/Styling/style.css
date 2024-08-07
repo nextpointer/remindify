@@ -3,21 +3,33 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Geist;
   
 }
 
 body{
-  background-color: #8ec5fc;
-  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  background-color: #000000;
+  background-color: #fff;
 }
+
+p,h1,h2,h3,h4,h5,h6,span,input[type="text"],input[type="select"],input[type="date"],input[type="time"]{
+  color: #fff;
+  color: #000000;
+}
+
+
+
+
 @font-face {
   font-family: "Monserrat";
   src: url(../font/Montserrat-Light.ttf);
   src: url(../font/Montserrat-Medium.ttf);
+  src: url(../font/Montserrat-VariableFont_wght.ttf);
 }
 @font-face {
-  font-family: Orbitron;
-  src: url(../font/Orbitron-Regular.ttf);
+  font-family: Geist;
+  src: url(../font/GeistMonoVF.ttf);
+  
 }
 
 :root{
@@ -28,12 +40,15 @@ body{
 
 
 input[type="text"] {
-  font-family: Monserrat;
+  font-family: Geist;
+  font-weight: 300;
   font-size: 1rem;
-  /* font-weight: bold; */
+  border: none;
+  border-bottom: solid 1px rgb(137, 136, 136);
 }
 input[type="date"] {
-  font-family: Orbitron;
+  font-family: Geist
+
 }
 
 #header {
@@ -90,13 +105,8 @@ input[type="date"] {
   margin: 10px;
   
 }
-#title{
-  background-color: #bdb2fc;
-}
 
 h1 {
-  color: #000;
-  font-family: Orbitron;
   font-size: 60px;
   font-style: normal;
   font-weight: 400;
@@ -119,6 +129,7 @@ h1 {
 }
 
 #remainder-operation {
+  /* color: #fff; */
   /* background-color: #42be82; */
   height: 77vh;
   width: 33%;
@@ -130,70 +141,67 @@ h1 {
 }
 
 #reminder-edit {
-  font-family: Orbitron;
-  height: 62vh;
+  height: 60vh;
   width: 96%;
   min-width: 300px;
-  border: solid rgb(152, 152, 152) 1px;
+  border: solid rgb(81, 81, 81) 1px;
   /* margin: 5px; */
   border-radius: 25px;
   padding: 20px 5px 5px 15px;
-  border-radius: 43px;
-  background: #ffffff;
-  /* box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191); */
-  
+  /* background-color: grey; */
+  margin-bottom: 6px;
+
 }
 
 #whats-new {
-  margin: 5px;
+  margin: 0;
 }
 
 .reminder-edit-font {
-  font-family: Orbitron;
-  color: #000;
   font-size: 20px;
   /* font-style: normal; */
   /* font-weight: 200; */
-  line-height: normal;
 }
 .reminder-edit-font p span {
-  color: #000;
+  
 }
 
 .reminder-input {
   border-radius: 5px;
-  border: 1px solid #cdcdcd;
-  background: #f9f9f9;
   height: 30px;
   width: 95%;
   min-width: 250px;
-  margin: 10px 0 18px 0;
+  margin: 5px 0 18px 0;
   padding: 5px;
   background-color: transparent;
+  outline: none;
 }
 
 #more-about {
   margin: 5px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 #more-about input {
   height: 50px;
 }
 .select-items {
-  color: #000;
-  font-family: Orbitron;
   font-size: 15px;
-  font-style: normal;
-  /* font-weight: 200; */
-  line-height: normal;
+  font-weight: 300;
   border-radius: 5px;
-  border: 1px solid #cdcdcd;
-  background: #ffffff;
+  border: none;
+  border-bottom: solid 1px #898888;
+  background:transparent;
   height: 30px;
   width: 95%;
   min-width: 250px;
-  margin: 10px 0 17px 0;
+  margin: 5px 0 17px 0;
   padding: 5px;
+  outline: none;
+  color: #b5b4b4;
 }
+
+
 #timer {
   display: flex;
   justify-content: start;
@@ -207,17 +215,17 @@ h1 {
   width:150px;
   height: 33px;
   margin: 2px;
-  color: #000;
-  font-family: Orbitron;
   font-size: 15px;
-  font-style: normal;
   /* font-weight: 200; */
   line-height: normal;
   border-radius: 5px;
-  border: 1px solid #cdcdcd;
-  background: #ffffff;
+  border: none;
+  border-bottom: solid 1px rgb(137, 136, 136);
+  background:transparent;
   /* margin: 10px 0 17px 0; */
   padding: 5px;
+  color: #a9a9a9;
+  outline: none;
 }
 
 #custom-calander {
@@ -230,19 +238,23 @@ h1 {
   height: 33px;
   width: 33%;
   border-radius: 5px;
-  border: 1px solid #cdcdcd;
-  background: #ffffff;
+  border: none;
+  border-bottom: solid 1px rgb(137, 136, 136);
+  background: transparent;
   padding: 5px;
+  outline: none;
 }
 
 #custom-time{
   height: 33px;
   width: 25%;
   border-radius: 5px;
-  border: 1px solid #cdcdcd;
-  background: #ffffff;
+  border: none;
+  border-bottom: solid 1px rgb(137, 136, 136);
+  background: transparent;
   padding: 5px;
-  font-family: Orbitron;
+  outline: none;
+
 }
 
 #submit {
@@ -258,14 +270,16 @@ h1 {
 #add {
   height: 40px;
   width: 140px;
-  font-family: Orbitron;
+  border-radius: 5px;
   margin-bottom: 2px;
   background-color: transparent;
-  border:solid 1px #cccaca;
+  border: 1px solid #aaa8a8;
+  color: #fff;
 }
 #add:hover {
-  background-color: #42be82;
+  background-color: #000000;
   transition: all ease 0.3s;
+  color: #fff;
 }
 
 /* adding catagory */
@@ -274,23 +288,22 @@ h1 {
   width: 96%;
   min-width: 300px;
   /* background-color: #b453e4; */
-  border: solid rgb(152, 152, 152) 1px;
+  border: solid rgb(81, 81, 81) 1px;
   margin: 5px;
   border-radius: 25px;
   padding: 25px 5px 5px 15px;
-  border-radius: 43px;
-  background: #ffffff;
-  /* box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191); */
+
 }
 
 #adding-catagory-input input {
   border-radius: 5px;
-  border: 1px solid #cdcdcd;
-  background: #ffffff;
+  border: none;
+  border-bottom: solid 1px rgb(137, 136, 136);
+  background:transparent;
   height: 35px;
   width: 75%;
   padding: 5px;
-  font-family: Monserrat;
+  outline: none;
 }
 
 #adding-catagory-input {
@@ -309,28 +322,26 @@ h1 {
 }
 
 #adding-catagory-input button {
-  font-family: Orbitron;
   height: 35px;
   width: auto;
   border-radius: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid black 1px;
-  padding: 2px;
+  border: solid rgb(106, 106, 106) 1px;
+  padding: 1rem 1rem;
   margin-left: 2px;
   background-color: transparent;
 }
 
 #adding-catagory-input button:hover{
-  background-color: #42be82;
+  color: #ffffff;
+  background-color: #000000;
   transition: all ease 0.3s;
 }
 
 
 #adding-catagory-header p {
-  color: #000;
-  font-family: Orbitron;
   font-size: 20px;
   font-style: normal;
   /* font-weight: 200; */
@@ -343,18 +354,17 @@ h1 {
 /* Reminder data portion */
 
 #reminder-data {
-  font-family: Monserrat;
   height: 77vh;
   width: 1000px;
   border: solid rgb(132, 132, 132) 1px;
-  margin: 5px;
+  margin: 0px;
   border-radius: 5px;
   padding: 10px;
-  border-radius: 43px;
-  background: #ffffff;
+  border-radius: 25px;
   /* box-shadow: -2.5px -2.5px 5px rgb(193, 191, 191); */
   /* background-color: #6953e4; */
   overflow: hidden;
+
 }
 
 #all-catagories {
@@ -369,19 +379,18 @@ h1 {
   /* background-color: #f47878; */
 }
 .catagory-button {
-  font-family: Orbitron;
   height: 30px;
   width: 130px;
-  background-color: #fff;
-  border: solid rgb(190, 190, 190) 1px;
+  border: solid rgb(141, 141, 141) 1px;
   border-radius: 2px;
   transition: all ease 0.5s;
   margin: 5px;
+  background-color: #464646;
 }
-.catagory-button:hover {
-  background-color: #000;
-  color: #fff;
-}
+/* .catagory-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+} */
 
 #all-learning-container-zone {
   height: 58vh;
@@ -408,7 +417,6 @@ h1 {
 }
 
 #delete-reminder-conatainer {
-  background-color: #f0eded;
   height: 30px;
   width: 98%;
   margin: 8px;
@@ -416,7 +424,6 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Orbitron;
 }
 
 #delete-reminder-conatainer:hover {
@@ -424,8 +431,8 @@ h1 {
 }
 
 .reminder-container {
-  font-family: Monserrat;
-  height: 150px;
+  /* height: 150px; */
+  height: auto;
   border: solid rgb(192, 192, 192) 1px;
   width: 270px;
   margin: 20px;
@@ -433,16 +440,15 @@ h1 {
   transition: all ease 0.5s;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  gap: 10px;
-  /* padding: 10px 5px 5px 20px; */
+  justify-content: center;
+  align-items: center;
 }
 
 .reminder-container:hover {
-  height: 220px;
+  /* height: 220px;
   width: 320px;
-  margin: 0px;
+  margin: 0px; */
+  transform: scale(1.15);
 }
 
 .reminder-container:hover .container-deleteUpdate {
@@ -452,22 +458,27 @@ h1 {
   transition: opacity 0.5s ease;
 }
 
-.reminder-container:hover .container-subHeading {
-  height: auto;
-  margin-bottom: 20px;
-  transition: opacity 1s ease;
+.remainder-link{
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  /* border: 1px solid rgb(70, 70, 70); */
+  border-radius: 50%;
+  margin: 3px;
 }
-.reminder-container:hover .container-subHeading p span {
-  transition: opacity 1s ease;
+
+.remainder-link a svg{
+  height: 40px;
+  width: 40px;
 }
 
 .remainder-details {
-  /* background-color: #8aefad; */
+  /* background-color: #547324; */
   padding: 7px 5px 0px 20px;
+  width: 100%;
 }
 
 .container-heading {
-  font-family: "Monserrat";
   width: 90%;
   height: auto;
   max-height: 45px;
@@ -478,27 +489,22 @@ h1 {
 }
 
 .container-subHeading {
-  font-family: "Monserrat";
   width: 90%;
   height: 25px;
   font-size: 0.6rem;
   /* background-color: #6953e4; */
   font-style: italic;
-  color: rgba(0, 0, 0, 0.873);
   overflow-y: hidden;
   margin-bottom: 20px;
 }
 .container-subHeading p span {
-  font-family: "Monserrat";
   display: inline-block;
-  background-color: #eceaea;
-  color: #fff;
+  background-color: #eceaea00;
   height: auto;
   width: 100%;
   padding: 6px;
   border-radius: 5px;
   font-weight: bold;
-  color: var(--primary-color-red);
   cursor: pointer;
 }
 
@@ -519,7 +525,7 @@ h1 {
 }
 
 .reminder-container:nth-child(1) {
-  background-color: #ffffff;
+  background-color: #ffffff00;
 }
 
 .container-deleteUpdate {
@@ -559,6 +565,9 @@ h1 {
 /* Add responsive */
 @media (max-width: 650px) {
   /* Adjustments for smaller screens */
+  #reminder-edit {
+    height: 52vh;
+  }
   #reminder{
     flex-wrap: wrap;
   }

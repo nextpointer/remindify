@@ -1,3 +1,8 @@
+// import a svg
+const redirectSVG =`<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000"><polyline points="48 28 48 16 36 16"/><line x1="48" y1="16" x2="16" y2="48"/></svg>`
+
+
 // Add new Category Function
 const AddCategory = document.querySelector("#adding-catagory-btn");
 const AddCategoryInput = document.querySelector("#adding-catagory-input-value");
@@ -9,6 +14,13 @@ const reminderContainerZone = document.querySelector(
 const deleteReminderContainer = document.querySelector(
   "#delete-reminder-conatainer"
 );
+// Handle custom interval inputs
+const timerDaySelect = document.getElementById("timer-day");
+const customDateInput = document.getElementById("custom-date");
+const customTimeInput = document.getElementById("custom-time");
+
+let renderTime ='' //this is only showing on remainder container
+
 
 // color selection
 const root = document.documentElement;
@@ -16,12 +28,25 @@ const redColor = getComputedStyle(root).getPropertyValue("--primary-color-red");
 const greenColor = getComputedStyle(root).getPropertyValue(
   "--primary-color-green"
 );
+// generates randome color
+function generateLightColor() {
+  // Generate random values for R, G, B within the range of light colors
+  const r = Math.floor(Math.random() * 156) + 100; // 100-255
+  const g = Math.floor(Math.random() * 156) + 100; // 100-255
+  const b = Math.floor(Math.random() * 156) + 100; // 100-255
+
+  // Convert to a valid RGB color string
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+const randomLightColor = generateLightColor()
 
 // select inputHeader
 const inputHeader = document.querySelector("#whats-new>input");
 // select the alert text content
 const alertTextContent = document.querySelector(".alert>span:nth-child(2");
 
+// For cheking whether any catagory created or not,if not then show error
 AddCategory.addEventListener("click", (e) => {
   // Check if the input value is empty
   if (AddCategoryInput.value.trim() === "") {
@@ -31,8 +56,7 @@ AddCategory.addEventListener("click", (e) => {
     return;
   } 
 
-  // Reset background color if input is not empty
-  AddCategory.style.backgroundColor = "";
+
 
   // Category Add
   const newCategoryElement = document.createElement("button");
@@ -162,20 +186,29 @@ addButton.addEventListener("click", () => {
   }
   const parentDiv = document.createElement("div");
   parentDiv.classList.add("reminder-container");
+  parentDiv.style.backgroundColor = generateLightColor()
+  
+
+  if(timerDaySelect.value==='custom'){
+    renderTime = customDateInput.value +" "+customTimeInput.value
+  }
+  else{
+    renderTime = 'every '+ timerDaySelect.value+' days'
+  }
 
   const remainderContainer = `
+    <div class='remainder-link'>
+      <a href='${whatsAbout.value}'target ='_blank'>${redirectSVG}</a>
+    </div>
     <div class="remainder-details">
       <div class="container-heading">
         <p>${whatsNew.value}</p>
       </div>
-      <div class="container-subHeading">
-        <p><span>${whatsAbout.value}</span></p>
-      </div>
       <div class="container-remimdTime">
         <p>Reminds <span>on</span></p>
         <p>
-          <span>23 FEB,2024</span>
-          <span>23:45</span>
+          <span>${renderTime}</span>
+
         </p>
         
       </div>
@@ -186,6 +219,7 @@ addButton.addEventListener("click", () => {
 
   whatsNew.value = "";
   whatsAbout.value = "";
+  renderTime = ''
   parentDiv.innerHTML = remainderContainer;
   const remainderDataField = document.querySelectorAll(".all-learning-containers");
   remainderDataField.forEach((container) => {
@@ -252,10 +286,7 @@ function schedulePushNotification(title, options) {
   }
 }
 
-// Handle custom interval inputs
-const timerDaySelect = document.getElementById("timer-day");
-const customDateInput = document.getElementById("custom-date");
-const customTimeInput = document.getElementById("custom-time");
+
 
 timerDaySelect.addEventListener("change", () => {
   if (timerDaySelect.value === "custom") {
