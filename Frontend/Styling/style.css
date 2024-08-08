@@ -123,10 +123,11 @@ input[type="date"] {
   }
 }
 .fork-section{
+  margin-left: 1rem;
   /* background-color: red; */
   width: 35%;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   a{
     display: flex;
@@ -233,13 +234,13 @@ input[type="date"] {
 }
 
 #reminder-edit {
-  height: 60vh;
+  height:auto;
   width: 96%;
   min-width: 300px;
   border: solid var(--border-color) 1px;
   /* margin: 5px; */
   border-radius: 25px;
-  padding: 20px 5px 5px 15px;
+  padding: 30px 5px 5px 15px;
   /* background-color: grey; */
   margin-bottom: 6px;
 }
@@ -286,20 +287,22 @@ input[type="date"] {
   margin: 5px 0 17px 0;
   padding: 5px;
   outline: none;
-  color: #b5b4b4;
+  color: #949494;
 }
 
 #timer {
+  min-width: 300px;
   display: flex;
   justify-content: start;
   align-items: center;
   /* background-color: #8af8c3; */
   height: 40px;
-  gap: 3vh;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 #timer-day {
-  width: 150px;
+  width: 100px;
   height: 33px;
   margin: 2px;
   font-size: 15px;
@@ -311,7 +314,7 @@ input[type="date"] {
   background: transparent;
   /* margin: 10px 0 17px 0; */
   padding: 5px;
-  color: #a9a9a9;
+  color: #898989;
   outline: none;
 }
 
@@ -319,7 +322,7 @@ input[type="date"] {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #6953e4;
+  /* background-color: #6953e4; */
 }
 #custom-date {
   height: 33px;
@@ -330,6 +333,7 @@ input[type="date"] {
   background: transparent;
   padding: 5px;
   outline: none;
+  color: var(--font-color);
 }
 
 #custom-time {
@@ -339,8 +343,8 @@ input[type="date"] {
   border: none;
   border-bottom: solid 1px var(--border-color);
   background: transparent;
-  padding: 5px;
-  outline: none;
+  color: var(--font-color);
+  
 }
 
 #submit {
@@ -632,16 +636,22 @@ input[type="date"] {
 @media (max-width: 650px) {
   /* Adjustments for smaller screens */
   #reminder-edit {
-    height: 52vh;
+    height: auto;
   }
   #reminder {
     flex-wrap: wrap;
+  }
+  #timer{
+    flex-wrap: nowrap;
   }
 
   #remainder-operation {
     width: 100%;
   }
 
+  .fork-section{
+    justify-content: space-between;
+  }
   .go-down{
     display: inline-block;
   }
