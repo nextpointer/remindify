@@ -16,8 +16,21 @@
   <!-- this is header portion -->
   <div id="header">
     <div id="heading" class="headers">
-      <h1>Remindify</h1>
+      <h1>Remindify</h1> 
     </div>
+    <div class="theme-fork">
+      <div class="theme-change">
+        <button class="moon theme" onclick="darktheme()"><span>🌙</span></button>
+        <div class="earth"><span>🌍</span></div>
+        <button class="sun theme" onclick="lightTheme()"><span>🔆</span></button>
+      </div>
+     
+      <div class="fork-section">
+        <div class="go-down"><a href="#reminder-data"><span>⬇</span></a></div>
+        <a href="https://github.com/lazy34/remindify/fork" target="_blank"><span>🍴</span></a>
+      </div>
+    </div>
+
     <div class="alert hide">
       <span class="fa-solid fa-circle-info"></span>
       <span class="alert-msg">Please create a category first</span>
@@ -46,15 +59,15 @@
         <div id="reminder-timer" class="reminder-edit-font">
           <p><span>🔔 </span>Reminds Every</p>
           <div id="timer">
-            <select id="timer-day">
+            <select id="timer-day" required>
               <option value="7">7 Days</option>
               <option value="15">15 Days</option>
               <option value="30">30 Days</option>
               <option value="100">100 Days</option>
               <option value="custom">Custom</option>
             </select>
-            <input type="date" name="custom-date" id="custom-date" disabled/>
-            <input type="time" name="custom-time" id="custom-time" disabled/>
+            <input type="date" name="custom-date" id="custom-date" required disabled/>
+            <input type="time" name="custom-time" id="custom-time" required disabled/>
           </div>
         </div>
         <div id="submit">
@@ -79,6 +92,7 @@
       </div>
       <div id="all-learning-container-zone">
         <div class="all-learning-containers">
+          
         </div>
       </div>
       <div id="delete-reminder-conatainer">

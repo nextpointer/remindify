@@ -332,3 +332,26 @@ addButton.addEventListener("click", () => {
     }
   });
 });
+
+
+// for dark mode
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark-mode');
+}
+
+const moon = document.querySelector(".moon")
+const sun = document.querySelector(".sun")
+const earth = document.querySelector(".earth")
+function darktheme(){
+    moon.addEventListener("click",()=>{
+      document.documentElement.classList.add('dark-mode');
+      earth.style.justifyContent = 'start'
+    })
+}
+
+function lightTheme(){
+  sun.addEventListener("click",()=>{
+    document.documentElement.classList.remove('dark-mode');
+    earth.style.justifyContent = 'end'
+  })
+}
