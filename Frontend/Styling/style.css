@@ -632,6 +632,12 @@ input[type="date"] {
   width: 100%;
 }
 
+.catagory-button.active {
+  background-color: #007bff; /* Change to your desired color */
+  color: white;
+}
+
+
 /* Add responsive */
 @media (max-width: 650px) {
   /* Adjustments for smaller screens */
