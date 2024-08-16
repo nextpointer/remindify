@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Geist;
+  font-family: Geist,monospace;
   scroll-behavior: smooth;
 }
 
@@ -16,8 +16,9 @@ body {
 
 @font-face {
   font-family: Geist;
-  src: url(../font/GeistMonoVF.ttf) format("truetype");
+  src: url(./fonts/GeistMonoVF.ttf);
 }
+
 
 :root {
   --primary-color-red: #f47878;
@@ -246,7 +247,8 @@ input[type="date"] {
 }
 
 .reminder-edit-font {
-  font-size: 20px;
+  font-size: 1.25rem;
+  /* font-size: 20px; */
   /* font-style: normal; */
   /* font-weight: 200; */
 }
