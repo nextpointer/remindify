@@ -7,7 +7,7 @@ import {
   deleteReminderFromDB,
   getCategoryDetails,
   getRemindersFromDB,
-} from "./util/indexDB.js";
+} from "../util/indexDB.js";
 
 // SVG for redirect icon
 const redirectSVG = `<?xml version="1.0" encoding="utf-8"?>
