@@ -13,12 +13,6 @@ body {
 }
 
 @font-face {
-  font-family: "Monserrat";
-  src: url(../font/Montserrat-Light.ttf);
-  src: url(../font/Montserrat-Medium.ttf);
-  src: url(../font/Montserrat-VariableFont_wght.ttf);
-}
-@font-face {
   font-family: Geist;
   src: url(../font/GeistMonoVF.ttf);
 }
