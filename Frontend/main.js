@@ -1,3 +1,4 @@
+// Import the necessary functions and SVG
 import {
   createDB,
   addCategoryToDB,
@@ -8,7 +9,7 @@ import {
   getRemindersFromDB,
 } from "./util/indexDB.js";
 
-// Import the SVG
+// SVG for redirect icon
 const redirectSVG = `<?xml version="1.0" encoding="utf-8"?>
 <svg width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000">
   <polyline points="48 28 48 16 36 16"/>
@@ -20,8 +21,12 @@ const AddCategory = document.querySelector("#adding-catagory-btn");
 const AddCategoryInput = document.querySelector("#adding-catagory-input-value");
 const CategoryZone = document.querySelector("#all-catagories");
 const selectCategories = document.querySelector("#Catagories");
-const reminderContainerZone = document.querySelector("#all-learning-container-zone");
-const deleteReminderContainer = document.querySelector("#delete-reminder-conatainer");
+const reminderContainerZone = document.querySelector(
+  "#all-learning-container-zone"
+);
+const deleteReminderContainer = document.querySelector(
+  "#delete-reminder-conatainer"
+);
 const timerDaySelect = document.getElementById("timer-day");
 const customDateInput = document.getElementById("custom-date");
 const customTimeInput = document.getElementById("custom-time");
@@ -34,7 +39,9 @@ const alertClosebtn = document.querySelector(".alert>span:nth-child(3)");
 // Color selection
 const root = document.documentElement;
 const redColor = getComputedStyle(root).getPropertyValue("--primary-color-red");
-const greenColor = getComputedStyle(root).getPropertyValue("--primary-color-green");
+const greenColor = getComputedStyle(root).getPropertyValue(
+  "--primary-color-green"
+);
 
 // Generates a random light color
 function generateLightColor() {
@@ -77,54 +84,68 @@ timerDaySelect.addEventListener("change", () => {
 
 // Fetch and display all categories and reminders on load
 async function loadData() {
-  // Fetch categories
-  const categories = await getCategoryDetails();
-  categories.forEach(category => {
-    const newCategoryElement = document.createElement("button");
-    newCategoryElement.classList.add("catagory-button");
-    newCategoryElement.innerHTML = `<p>${category}</p>`;
-    CategoryZone.append(newCategoryElement);
+  try {
+    // Fetch categories
+    const categories = await getCategoryDetails();
+    categories.forEach(async (category, index) => {
+      const newCategoryElement = document.createElement("button");
+      newCategoryElement.classList.add("catagory-button");
+      newCategoryElement.innerHTML = `<p>${category.name}</p>`;
+      CategoryZone.append(newCategoryElement);
 
-    const optionElement = document.createElement("option");
-    optionElement.value = category;
-    optionElement.textContent = category;
-    selectCategories.append(optionElement);
+      const optionElement = document.createElement("option");
+      optionElement.value = category.name;
+      optionElement.textContent = category.name;
+      selectCategories.append(optionElement);
 
-    const reminderContainer = document.createElement("div");
-    reminderContainer.classList.add("all-learning-containers", category);
-    reminderContainerZone.append(reminderContainer);
-  });
+      const reminderContainer = document.createElement("div");
+      reminderContainer.classList.add("all-learning-containers", category.name);
+      reminderContainerZone.append(reminderContainer);
 
-  // Fetch reminders and display them
-  const reminders = await getRemindersFromDB();
-  reminders.forEach(reminder => {
-    const parentDiv = document.createElement("div");
-    parentDiv.classList.add("reminder-container");
-    parentDiv.style.backgroundColor = generateLightColor();
+      // Fetch reminders and display them
+      const reminders = await getRemindersFromDB(category.name);
+      reminders.forEach((reminder) => {
+        const parentDiv = document.createElement("div");
+        parentDiv.classList.add("reminder-container");
+        parentDiv.style.backgroundColor = generateLightColor();
 
-    const reminderHTML = `
-      <div class='remainder-link'>
-        <a href='${reminder.link}' target='_blank'>${redirectSVG}</a>
-      </div>
-      <div class="remainder-details">
-        <div class="container-heading">
-          <p>${reminder.title}</p>
-        </div>
-        <div class="container-remimdTime">
-          <p>Reminds <span>on</span></p>
-          <p><span>${reminder.remindTime}</span></p>
-        </div>
-      </div>
-      <button class="delete-btn">Delete</button>
-    `;
+        const reminderHTML = `
+          <div class='remainder-link'>
+            <a href='${reminder.link}' target='_blank'>${redirectSVG}</a>
+          </div>
+          <div class="remainder-details">
+            <div class="container-heading">
+              <p>${reminder.title}</p>
+            </div>
+            <div class="container-remimdTime">
+              <p>Reminds <span>on</span></p>
+              <p><span>${reminder.remindTime}</span></p>
+            </div>
+          </div>
+          <div class="container-deleteUpdate">
+            <img src="./assets/delete.png" alt="Delete">
+          </div>
+        `;
 
-    parentDiv.innerHTML = reminderHTML;
+        parentDiv.innerHTML = reminderHTML;
 
-    const reminderContainer = document.querySelector(`.${reminder.category}`);
-    if (reminderContainer) {
-      reminderContainer.appendChild(parentDiv);
-    }
-  });
+        const reminderContainer = document.querySelector(`.${category.name}`);
+        if (reminderContainer) {
+          reminderContainer.appendChild(parentDiv);
+        }
+
+        // Schedule a push notification for the reminder
+        scheduleReminderNotification(reminder);
+      });
+
+      // Auto-focus the first category on page load
+      if (index === 0) {
+        highlightCategory(category.name);
+      }
+    });
+  } catch (e) {
+    console.error("Something went wrong:", e);
+  }
 }
 
 // Add category
@@ -161,13 +182,30 @@ AddCategory.addEventListener("click", async () => {
 // Highlight the selected category
 function highlightCategory(categoryName) {
   document.querySelectorAll(".catagory-button").forEach((button) => {
-    button.classList.toggle("active", button.textContent.trim() === categoryName);
+    button.classList.toggle(
+      "active",
+      button.textContent.trim() === categoryName
+    );
   });
 
   document.querySelectorAll(".all-learning-containers").forEach((container) => {
-    container.classList.toggle("visible", container.classList.contains(categoryName));
+    container.classList.toggle(
+      "visible",
+      container.classList.contains(categoryName)
+    );
   });
+
+  // Update the select option to the focused category
+  selectCategories.value = categoryName;
 }
+
+// Listen for category button clicks to highlight and show reminders
+CategoryZone.addEventListener("click", (event) => {
+  if (event.target.closest(".catagory-button")) {
+    const categoryName = event.target.closest(".catagory-button").textContent.trim();
+    highlightCategory(categoryName);
+  }
+});
 
 // Delete category
 deleteReminderContainer.addEventListener("click", async () => {
@@ -177,8 +215,17 @@ deleteReminderContainer.addEventListener("click", async () => {
     return;
   }
 
+  const categoryButtons = document.querySelectorAll(".catagory-button p");
+  const currentCategoryIndex = Array.from(categoryButtons).findIndex(
+    (button) => button.innerText.trim() === selectedCategory
+  );
+
   // Remove category button and option
-  document.querySelector(`.catagory-button p`).innerText === selectedCategory ? document.querySelector(`.catagory-button p`).parentElement.remove() : null;
+  document.querySelectorAll(".catagory-button").forEach((button) => {
+    if (button.querySelector("p").innerText.trim() === selectedCategory) {
+      button.remove();
+    }
+  });
   document.querySelector(`option[value='${selectedCategory}']`).remove();
 
   // Remove category div and its reminders
@@ -187,8 +234,22 @@ deleteReminderContainer.addEventListener("click", async () => {
     categoryDivToRemove.remove();
     await deleteCategoryFromDB(selectedCategory);
     showAlert("Category removed", "success");
+
+    // Focus on the previous or next category
+    const newFocusIndex =
+      currentCategoryIndex === 0
+        ? 0
+        : currentCategoryIndex - 1 < categoryButtons.length
+        ? currentCategoryIndex - 1
+        : categoryButtons.length - 1;
+
+    const newCategoryToFocus = categoryButtons[newFocusIndex]?.textContent.trim();
+    if (newCategoryToFocus) {
+      highlightCategory(newCategoryToFocus);
+    }
   }
 });
+
 
 // Add reminder
 addButton.addEventListener("click", async () => {
@@ -206,9 +267,18 @@ addButton.addEventListener("click", async () => {
   parentDiv.classList.add("reminder-container");
   parentDiv.style.backgroundColor = generateLightColor();
 
-  const renderTime = timerDaySelect.value === 'custom'
-    ? `${customDateInput.value} ${customTimeInput.value}`
-    : `every ${timerDaySelect.value} days`;
+  let renderTime;
+  if (timerDaySelect.value === "custom") {
+    const dateValue = customDateInput.value;
+    const timeValue = customTimeInput.value;
+
+    // Combine date and time into a single string in a standard format
+    renderTime = `${dateValue} ${timeValue}`;
+  } else {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + parseInt(timerDaySelect.value));
+    renderTime = currentDate.toISOString();
+  }
 
   const reminderHTML = `
     <div class='remainder-link'>
@@ -223,12 +293,16 @@ addButton.addEventListener("click", async () => {
         <p><span>${renderTime}</span></p>
       </div>
     </div>
-    <button class="delete-btn">Delete</button>
+    <div class="container-deleteUpdate">
+      <img src="./assets/delete.png" alt="">
+    </div>
   `;
 
   parentDiv.innerHTML = reminderHTML;
 
-  const reminderContainer = document.querySelector(`.${selectCategories.value}`);
+  const reminderContainer = document.querySelector(
+    `.${selectCategories.value}`
+  );
   if (reminderContainer) {
     reminderContainer.appendChild(parentDiv);
 
@@ -263,31 +337,16 @@ function scheduleReminderNotification(reminderData) {
     }, timeDifference);
   }
 }
+// Delete a reminder
+reminderContainerZone.addEventListener("click", async (event) => {
+  if (event.target.matches(".container-deleteUpdate img")) {
+    const reminderElement = event.target.closest(".reminder-container");
+    const categoryName = selectCategories.value;
+    const title = reminderElement.querySelector(".container-heading p").textContent;
 
-// Show category content
-CategoryZone.addEventListener("click", (e) => {
-  const clickedCategoryButton = e.target.closest(".catagory-button");
-  if (clickedCategoryButton) {
-    const categoryName = clickedCategoryButton.textContent.trim();
-    highlightCategory(categoryName);
-  }
-});
-
-// Delete reminder
-reminderContainerZone.addEventListener("click", (e) => {
-  const deleteButton = e.target.closest(".delete-btn");
-  if (deleteButton) {
-    const reminderContainer = deleteButton.closest(".reminder-container");
-    if (reminderContainer) {
-      const reminderTitle = reminderContainer.querySelector(".container-heading p").textContent.trim();
-      const category = Array.from(document.querySelectorAll(".all-learning-containers"))
-                            .find(container => container.contains(reminderContainer))
-                            .classList[1];
-      deleteReminderFromDB(category, reminderTitle).then(() => {
-        reminderContainer.remove();
-        showAlert("Reminder removed", "success");
-      });
-    }
+    reminderElement.remove();
+    await deleteReminderFromDB(categoryName, title);
+    showAlert("Reminder removed", "success");
   }
 });
 
@@ -299,7 +358,7 @@ alertClosebtn.addEventListener("click", () => {
 
 // Toggle dark mode
 function toggleDarkMode() {
-  document.documentElement.classList.toggle('dark-mode');
+  document.documentElement.classList.toggle("dark-mode");
 }
 
 const moon = document.querySelector(".moon");
@@ -307,14 +366,17 @@ const sun = document.querySelector(".sun");
 const earth = document.querySelector(".earth");
 
 moon.addEventListener("click", () => {
-  document.documentElement.classList.add('dark-mode');
-  earth.style.justifyContent = 'start';
+  document.documentElement.classList.add("dark-mode");
+  earth.style.justifyContent = "start";
 });
 
 sun.addEventListener("click", () => {
-  document.documentElement.classList.remove('dark-mode');
-  earth.style.justifyContent = 'end';
+  document.documentElement.classList.remove("dark-mode");
+  earth.style.justifyContent = "end";
 });
 
-// Initialize the application
-loadData();
+// Initial setup: create database and load data
+document.addEventListener("DOMContentLoaded", async () => {
+  await createDB();
+  await loadData();
+});

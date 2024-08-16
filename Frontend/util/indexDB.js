@@ -88,9 +88,11 @@ export async function addReminderToDB(reminderData) {
   });
 }
 
+
 // Get reminders from a specific category
 export async function getRemindersFromDB(categoryName) {
   const db = await createDB();
+  
   return new Promise((resolve, reject) => {
     const transaction = db.transaction([storeName], "readonly");
     const store = transaction.objectStore(storeName);
