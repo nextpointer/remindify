@@ -9,9 +9,6 @@ import {
   getRemindersFromDB,
 } from "./util/indexDB.js";
 
-import './font/GeistMonoVF.ttf'
-import './assets/delete.png'
-
 // SVG for redirect icon
 const redirectSVG = `<?xml version="1.0" encoding="utf-8"?>
 <svg width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000">
