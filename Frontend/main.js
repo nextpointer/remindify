@@ -294,7 +294,7 @@ addButton.addEventListener("click", async () => {
       </div>
     </div>
     <div class="container-deleteUpdate">
-      <img src="./assets/delete.png" alt="">
+      <span>✕</span>
     </div>
   `;
 
@@ -339,7 +339,7 @@ function scheduleReminderNotification(reminderData) {
 }
 // Delete a reminder
 reminderContainerZone.addEventListener("click", async (event) => {
-  if (event.target.matches(".container-deleteUpdate img")) {
+  if (event.target.matches(".container-deleteUpdate span")) {
     const reminderElement = event.target.closest(".reminder-container");
     const categoryName = selectCategories.value;
     const title = reminderElement.querySelector(".container-heading p").textContent;
