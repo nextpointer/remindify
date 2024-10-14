@@ -758,6 +758,11 @@ input[type="date"] {
     padding: 0;
     /* background-color: red; */
   }
+
+  .help-manual{
+    width: 98%;
+    height: 95vh;
+  }
   .help-manual p,li{
     font-size: 0.8rem;
   }
