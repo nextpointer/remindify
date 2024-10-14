@@ -1,24 +1,21 @@
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Geist,monospace;
+  font-family: Geist, monospace;
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--font-color);
- 
+  z-index: 0;
 }
 
 @font-face {
   font-family: Geist;
   src: url(./fonts/GeistMonoVF.ttf);
 }
-
 
 :root {
   --primary-color-red: #f47878;
@@ -119,14 +116,14 @@ input[type="date"] {
     font-size: 2rem;
   }
 }
-.star-section{
+.star-section {
   margin-left: 1rem;
   /* background-color: red; */
   width: 35%;
   display: flex;
   justify-content: end;
   align-items: center;
-  a{
+  a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,18 +133,18 @@ input[type="date"] {
     cursor: pointer;
     text-decoration: none;
   }
-  span{
+  span {
     font-size: 2rem;
     margin-right: 1rem;
   }
 }
 
-.go-down{
+.go-down {
   display: none;
-  a{
+  a {
     text-decoration: none;
   }
-  span{
+  span {
     font-size: 3rem;
   }
 }
@@ -217,6 +214,8 @@ input[type="date"] {
   align-items: start;
   color: var(--font-color);
   /* background-color: #bb8aef; */
+  position: absolute;
+  z-index: 10;
 }
 
 #remainder-operation {
@@ -231,7 +230,7 @@ input[type="date"] {
 }
 
 #reminder-edit {
-  height:auto;
+  height: auto;
   width: 96%;
   min-width: 300px;
   border: solid var(--border-color) 1px;
@@ -342,7 +341,6 @@ input[type="date"] {
   border-bottom: solid 1px var(--border-color);
   background: transparent;
   color: var(--font-color);
-  
 }
 
 #submit {
@@ -635,6 +633,80 @@ input[type="date"] {
   color: white;
 }
 
+/* help container feature */
+.helpContainer {
+  height: 100vh;
+  width: 100%;
+  z-index: 99;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: #ffffff31;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.help-manual {
+  height: 85vh;
+  width: 70%;
+  border: 1px solid rgb(142, 142, 142);
+  position: relative; /* Make this container the reference for the ::before positioning */
+  z-index: 9999;
+  background-color: white;
+  border-radius: 25px;
+  padding: 2rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: all ease 1s;
+}
+
+.help-manual::before {
+  content: '✕'; 
+  position: absolute; 
+  height: 3rem; 
+  width: 3rem;
+  right: 5px;
+  top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid rgb(131, 131, 131);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10000; 
+}
+
+.help-manual::before:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+
+
+.manual-header{
+  margin: 1rem;
+}
+.emoji{
+  margin: 1rem 0 1rem -10px;
+}
 
 /* Add responsive */
 @media (max-width: 650px) {
@@ -645,7 +717,7 @@ input[type="date"] {
   #reminder {
     flex-wrap: wrap;
   }
-  #timer{
+  #timer {
     flex-wrap: nowrap;
   }
 
@@ -653,10 +725,10 @@ input[type="date"] {
     width: 100%;
   }
 
-  .fork-section{
+  .fork-section {
     justify-content: space-between;
   }
-  .go-down{
+  .go-down {
     display: inline-block;
   }
 
@@ -681,9 +753,18 @@ input[type="date"] {
     }
   }
   .all-learning-containers {
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      /* background-color: red; */
-    }
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    /* background-color: red; */
+  }
+  .help-manual p,li{
+    font-size: 0.8rem;
+  }
+  .help-manual > .emoji{
+    font-size: 1.2rem;
+  }
+  .help-manual> .manual-header{
+    font-size: 1.3rem;
+  }
 }
