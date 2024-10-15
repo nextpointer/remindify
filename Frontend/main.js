@@ -8,6 +8,7 @@ import {
   getCategoryDetails,
   getRemindersFromDB,
 } from "./util/indexDB.js";
+import { htmlHelpContent } from "./util/helpContent.js";
 
 // SVG for redirect icon
 const redirectSVG = `<?xml version="1.0" encoding="utf-8"?>
@@ -379,93 +380,46 @@ sun.addEventListener("click", () => {
   earth.style.justifyContent = "end";
 });
 
-//  New user identity
+
+
+// Check for new user identity
 if (!localStorage.getItem("NewUser")) {
-  // create the new user help container
-  const helpContainer = document.createElement("div");
-  helpContainer.classList.add("helpContainer");
-  let body = document.querySelector("body");
-  helpContainer.innerHTML = `
-    <div class='blur-overlay'></div>
-    <button class='delete-manual'>✕</button>
-
-    <div class='help-manual'>
-       <center><h1 class='manual-header'>Welcome to Remindify! 🎉</h1> </center>
-    <p>Let’s get you set up so you never forget those important concepts and topics again. Follow these simple steps, and you'll be mastering your learning journey in no time!</p>
-
-    <h2 class="emoji">🗂️ Adding Categories</h2>
-    <ul>
-        <li><strong>Create a New Category ➕</strong></li>
-        <ul>
-            <li>Click on the <em>'Add Category'</em> button to create a new category.</li>
-            <li>Enter a name for your category (e.g., JavaScript Tricks, Machine Learning Theories).</li>
-            <li>Hit the <em>Add</em> button, and voilà! You've got your first category!</li>
-        </ul>
-        <li><strong>Manage Categories 🗄️</strong></li>
-        <ul>
-            <li>Manage any category to focus on it and view all reminders related to that topic.</li>
-            <li>If you want to delete a category, click the <em>Trash Icon</em> ✕ next to it—say goodbye to clutter!</li>
-        </ul>
-    </ul>
-
-    <h2 class="emoji">⏰ Setting Custom Reminders</h2>
-    <ul>
-        <li><strong>Add a Reminder 🔔</strong></li>
-        <ul>
-            <li>Click on the <em>'Add Reminder'</em> button to set a new reminder.</li>
-            <li>Fill in the details: add a title, description, select the category, and choose the date and time.</li>
-            <li>Choose if you want this reminder to repeat daily, weekly, or monthly.</li>
-            <li>Click <em>'Add'</em> to save your reminder. Easy as pie! 🥧</li>
-        </ul>
-        <li><strong>Stay Notified 📬</strong></li>
-        <ul>
-            <li>Ensure your browser allows notifications from Remindify.</li>
-            <li>When the time comes, a notification will pop up to remind you of what you've learned! 💡</li>
-        </ul>
-    </ul>
-
-    <h2 class="emoji">🌈 Light & Dark Mode</h2>
-    <ul>
-        <li><strong>Switch Themes 🌞🌜</strong></li>
-        <ul>
-            <li>Click the <em>'Theme Toggle'</em> button to switch between Light Mode (for day) and Dark Mode (for night).</li>
-            <li>Enjoy learning in the style that suits you best!</li>
-        </ul>
-    </ul>
-
-    <h2 class="emoji">🎯 Tips and Tricks</h2>
-    <ul>
-        <li><strong>Organize Like a Pro 📂</strong></li>
-        <ul>
-            <li>Use categories to break down your topics into smaller chunks.</li>
-            <li>Group similar reminders to easily focus on one subject at a time.</li>
-        </ul>
-        <li><strong>Repeat and Retain 🔁</strong></li>
-        <ul>
-            <li>Set recurring reminders to regularly revisit important concepts.</li>
-            <li>Use this feature to make sure knowledge sticks for the long run!</li>
-        </ul>
-        <li><strong>Embrace Simplicity 🛠️</strong></li>
-        <ul>
-            <li>Remindify is all about keeping things simple. Don’t overwhelm yourself with too many reminders at once.</li>
-            <li>Focus on one category or concept at a time to make the most of your study sessions.</li>
-        </ul>
-    </ul>
-    <center><h2 class="emoji">😊Enjoy!😎</h2></center>
-    </div>
-    
-    `;
-  body.appendChild(helpContainer);
-
+  createHelpContainer();
   localStorage.setItem("NewUser", true);
 }
 
-document.querySelector('.help-manual').addEventListener('click', function(event) {
-  if (event.target.closest('.help-manual') && event.target === this) {
-    // Close or remove the help manual container here
-    this.parentElement.style.display = 'none';
+const helpBtn = document.querySelector(".how");
+if (helpBtn) {
+  helpBtn.addEventListener("click", () => {
+    createHelpContainer();
+  });
+} else {
+  console.log("Help button not found.");
+}
+
+// Function to create the help container and attach the close button event listener
+function createHelpContainer() {
+  const existingHelpContainer = document.querySelector(".helpContainer");
+
+  // Check if help container already exists to prevent multiple creations
+  if (!existingHelpContainer) {
+    const helpContainer = document.createElement("div");
+    helpContainer.classList.add("helpContainer");
+    let body = document.querySelector("body");
+    helpContainer.innerHTML = htmlHelpContent;
+    body.appendChild(helpContainer);
+
+    // Set up the close button event listener after the help container is added to the DOM
+    const closeButton = helpContainer.querySelector(".real-close-btn");
+    if (closeButton) {
+      closeButton.addEventListener("click", () => {
+        helpContainer.remove(); // Remove the help container from the DOM
+      });
+    }
   }
-});
+}
+
+
 
 
 // Initial setup: create database and load data

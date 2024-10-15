@@ -660,25 +660,9 @@ input[type="date"] {
   pointer-events: none;
 }
 
-.help-manual {
-  height: 85vh;
-  width: 70%;
-  border: 1px solid rgb(142, 142, 142);
-  position: relative; /* Make this container the reference for the ::before positioning */
-  z-index: 9999;
-  background-color: white;
-  border-radius: 25px;
-  padding: 2rem;
-  overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  transition: all ease 1s;
-}
-
-.help-manual::before {
-  content: '✕'; 
-  position: absolute; 
-  height: 3rem; 
+.real-close-btn {
+  position: absolute;
+  height: 3rem;
   width: 3rem;
   right: 5px;
   top: 5px;
@@ -690,11 +674,23 @@ input[type="date"] {
   border: 1px solid rgb(131, 131, 131);
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 10000; 
+  z-index: 10000;
 }
 
-.help-manual::before:hover {
-  background-color: #f0f0f0;
+/* Retaining the styles for the help-manual */
+.help-manual {
+  height: 85vh;
+  width: 70%;
+  border: 1px solid rgb(142, 142, 142);
+  position: relative; /* Make this container the reference for the positioning */
+  z-index: 9999;
+  background-color: white;
+  border-radius: 25px;
+  padding: 2rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: all ease 1s;
 }
 
 
@@ -706,6 +702,17 @@ input[type="date"] {
 }
 .emoji{
   margin: 1rem 0 1rem -10px;
+}
+
+.how{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 /* Add responsive */
