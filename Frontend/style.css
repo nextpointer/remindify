@@ -14,7 +14,7 @@ body {
 
 @font-face {
   font-family: Geist;
-  src: url(./fonts/GeistMonoVF.ttf);
+  src: url(./public/assets/fonts/GeistMonoVF.ttf);
 }
 
 :root {
