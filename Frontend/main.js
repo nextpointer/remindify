@@ -64,6 +64,19 @@ const showAlert = (message, type) => {
   }, 3000);
 };
 
+(
+  ()=>{
+    Notification.requestPermission().then((permission)=>{
+      if(permission==='granted'){
+        console.log("Notification permission granted");
+      }
+      else{
+        console.log("Notification permission denied");
+      }
+    })
+  }
+)()
+
 // Schedule push notifications
 function schedulePushNotification(title, options) {
   if ("Notification" in window) {
@@ -418,6 +431,7 @@ function createHelpContainer() {
     }
   }
 }
+
 
 
 
